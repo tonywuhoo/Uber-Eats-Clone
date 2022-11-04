@@ -2,6 +2,7 @@ import Menu from "./Menu.jsx"
 import Delivery from './Delivery.jsx';
 import Cart from "./Cart.jsx";
 import './App.css';
+import About from "./About";
 
 export default function Home() {
   return (
@@ -14,8 +15,8 @@ export default function Home() {
         <div className='title'>Füber Eats</div>    
  < Cart className='cart'/>
         </header>
-        
-        <Delivery />
+        {/* comment this out */}
+        <About />
       </div>
     </>
   );
