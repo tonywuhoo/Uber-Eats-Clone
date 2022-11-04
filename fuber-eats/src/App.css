@@ -106,3 +106,21 @@ button {
   position: relative;
   margin-top: 2px;
 }
+
+.about-container{
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  margin: 10px;
+}
+
+.about-image{
+  display: flex;
+  max-height: 250px;
+  max-width: 250px;
+}
+
+.about-text{
+  display: flex;
+  font-size: 12px;
+}
