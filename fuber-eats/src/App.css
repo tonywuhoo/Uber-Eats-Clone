@@ -110,17 +110,21 @@ button {
 .about-container{
   display: flex;
   flex-direction: column;
+  margin: 100px;
+  height: 500px;
+  max-width: 100%;
+  gap: 50px;
   overflow: scroll;
-  margin: 10px;
 }
 
 .about-image{
-  display: flex;
-  max-height: 250px;
-  max-width: 250px;
+  float: left;
+  height: 250px;
+  width: 250px;
 }
 
-.about-text{
+.about-title{
   display: flex;
-  font-size: 12px;
+  align-items: center;
+  justify-content: center;
 }

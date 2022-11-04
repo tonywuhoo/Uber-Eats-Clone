@@ -9,26 +9,36 @@ export default function About() {
 
   return (
     <div className="about-container">
-      <div className="about-content">
+      <div className="about-card">
         <img src={Akeel} alt="Akeel" className="about-image" />
-        <p className="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h1 className="about-title">Mohamed Akeel Khan</h1>
+        <h1 className="about-title">Lorem ipsum</h1>
       </div>
-      <div className="about-content">
+
+      <div className="about-card">
         <img src={Chelsea} alt="Chelsea" className="about-image" />
-        <p className="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h1 className="about-title">Chelsea Douglas</h1>
+        <h1 className="about-title">Lorem ipsum</h1>
       </div>
-      <div className="about-content">
+
+      <div className="about-card">
         <img src={Khris} alt="Khris" className="about-image" />
-        <p className="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h1 className="about-title">Khristopher Patrick</h1>
+        <h1 className="about-title">Lorem ipsum</h1>
       </div>
-      <div className="about-content">
+
+      <div className="about-card">
         <img src={Nichole} alt="Nichole" className="about-image" />
-        <p className="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h1 className="about-title">Nichole De La Rosa</h1>
+        <h1 className="about-title">Lorem ipsum</h1>
       </div>
-      <div className="about-content">
+
+      <div className="about-card">
         <img src={Tony} alt="Tony" className="about-image" />
-        <p className="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h1 className="about-title">Tony Wu</h1>
+        <h1 className="about-title">Lorem ipsum</h1>
       </div>
+
     </div>
   )
  }
