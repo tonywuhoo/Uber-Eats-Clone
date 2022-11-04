@@ -8,7 +8,8 @@ import allProductData from "./allProductData.js";
 export default function Home() {
 
   // Search Logic
-  // const [searchParam, setsearchParams] = useState("")
+  const [searchParam, setsearchParams] = useState("")
+
   // const onSearch = event => {
   //   event.preventDefault()
   //   let AlphabetSearch = searchParam.split("").sort()
@@ -42,10 +43,27 @@ export default function Home() {
 
   // }
 
-  // const handleChange = event => {
-  //   setsearchParams(event.target.value)
-  //   console.log(searchParam)
-  // }
+  const handleChange = event => {
+    setsearchParams(event.target.value)
+    console.log(searchParam)
+  }
+
+  const onSearch = event => {
+    event.preventDefault()
+    let result = []
+    let search = searchParam.toLowerCase()
+    allProductData.map((element, index) => {
+      element.name = element.name.toLowerCase()
+      if (element.name.includes(search)) {
+        result.push(element)
+      }
+      else {
+        console.log("Nothing found")
+      }
+    })
+    console.log(result)
+  }
+
   
   return (
     <>
@@ -56,10 +74,10 @@ export default function Home() {
           <Menu className="menu"/>
           <div className='title'>Füber Eats</div>  
 
-          {/* <form onSubmit={onSearch}>
+          <form onSubmit={onSearch}>
           <input type="text" id="onSearch" onChange={handleChange}></input>
         <input type="submit"/>
-          </form> */}
+          </form>
 
         < Cart className='cart'/>
         </header>
