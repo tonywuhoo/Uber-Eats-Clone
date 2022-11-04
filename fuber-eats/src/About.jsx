@@ -9,6 +9,7 @@ export default function About() {
 
   return (
     <div className="about-container">
+      <h1 className="about-header">About Us</h1>
       <div className="about-card">
         <img src={Akeel} alt="Akeel" className="about-image" />
         <h1 className="about-title">Mohamed Akeel Khan</h1>

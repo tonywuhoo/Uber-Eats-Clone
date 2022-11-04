@@ -15,8 +15,7 @@ export default function Home() {
         <div className='title'>Füber Eats</div>    
  < Cart className='cart'/>
         </header>
-        {/* comment this out */}
-        <About />
+        <Delivery />
       </div>
     </>
   );
