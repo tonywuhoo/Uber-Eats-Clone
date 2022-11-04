@@ -2,9 +2,11 @@ import React from 'react'
 import { Link } from "react-router-dom"
 
 
+
 export default function Home() {
   return (
     <div className='home'>
+      <div className='hungry'>Get Food Now!</div>
       <div className="address">
       <input className='input' type="text"
         name="Address"
