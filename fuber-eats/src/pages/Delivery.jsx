@@ -17,11 +17,15 @@ export default function Delivery() {
  }, []);
 
   return (
-    <div className="container">
+    <div className="products-container">
+      <h1 className="products-header">Products</h1>
       {
         menu.map((item, index) => {
           return (
-            <h2>{item.name}</h2>
+            <div>
+              <h2 className="product-name">{item.name}</h2>
+                <img src={item.img} className="product-image"/>
+            </div>
           )
         })
       }

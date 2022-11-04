@@ -134,3 +134,19 @@ button {
   align-items: center;
   justify-content: center;
 }
+
+.products-container{
+display: grid;
+overflow: scroll;
+}
+
+.products-header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image{
+  max-width: 250px;
+  max-height: 250px;
+}
