@@ -35,10 +35,8 @@ header {
   transition: all 0.3s ease;
   background-color: rgb(6, 8, 8);
 }
-.hamburger {
-  display: none;
-  cursor: pointer;
-}
+
+
 .menu {
   position:fixed;
   right: -100%;

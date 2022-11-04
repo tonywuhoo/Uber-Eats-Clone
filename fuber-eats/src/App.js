@@ -1,8 +1,4 @@
-import Menu from "./Menu.jsx"
-import Delivery from './Delivery.jsx';
-import Cart from "./Cart.jsx";
 import './App.css';
-import About from "./About";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 // import Menu from "./components/Menu";
@@ -15,7 +11,6 @@ function App() {
       <Navbar />
       {/* <Home /> */}
       <Routes>
-        {/* <Delivery/> */}
         <Route
           path="/"
           element={
