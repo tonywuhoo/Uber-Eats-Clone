@@ -3,7 +3,6 @@ import Delivery from './Delivery.jsx';
 import Cart from "./Cart.jsx";
 import './App.css';
 import { useState } from "react"
-import allProductData from "./allProductData.js";
 import sha256 from 'js-sha256'
 
 export default function Home() {
@@ -20,21 +19,29 @@ export default function Home() {
     event.preventDefault()
     let result = []
     let search = searchParam.toLowerCase()
-    allProductData.map((element, index) => {
-      element.name = element.name.toLowerCase()
-      if (element.name.includes(search)) {
-        result.push(element)
-      }
-      else {
-        console.log("Nothing found")
-      }
-    })
-    console.log(result)
+    fetch("https://fubereats-backend-production.up.railway.app/products")
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        data.map((element, index) => {
+          let lowercase = element.name
+          lowercase = lowercase.toLowerCase()
+          console.log(lowercase)
+          if (lowercase.includes(search)) {
+            result.push(element)
+          }
+          else {
+            console.log("Nothing")
+          }
+        })
+        console.log(result)
+      })
   }
 
   const [User, setUser] = useState("")
   const [Password, setPassword] = useState("")
-  
+
   const LoginHandleChange = event => {
     if (event.target.id === "username") {
       setUser(event.target.value)
@@ -49,6 +56,7 @@ export default function Home() {
     console.log("Logging In")
     console.log("User: " + User + " Password: " + Password)
     let encrypted = sha256(User + Password)
+    console.log(encrypted)
   }
 
   
@@ -73,6 +81,7 @@ export default function Home() {
           <input type="password" id="password" onChange={LoginHandleChange}></input>
           <input type="submit" />
           </form>
+
 
         < Cart className='cart'/>
         </header>
