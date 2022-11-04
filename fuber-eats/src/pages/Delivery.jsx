@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Delivery() {
   const [menu, setMenu] = useState([]);
@@ -16,6 +17,14 @@ export default function Delivery() {
  }, []);
 
   return (
-    <div className='delivery'>Delivery</div>
+    <div className="container">
+      {
+        menu.map((item, index) => {
+          return (
+            <h2>{item.name}</h2>
+          )
+        })
+      }
+    </div>
   )
 }
