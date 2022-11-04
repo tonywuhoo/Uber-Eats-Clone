@@ -1,21 +1,26 @@
+import { FaShoppingCart } from 'react-icons/fa';
+import Menu from "./Menu.jsx"
+import Delivery from './Delivery.jsx';
 
 import './App.css';
 
-function App() {
+export default function Home() {
   return (
     <>
-      <nav className="navbar">
-      <div class="hamburger">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-  </div>
-        FüberEats
-      </nav>
-
-
+      <div className='App' style={{
+        backgroundImage: "url(/fast-food.png)"
+        }}>
+        <header>
+          <Menu/>
+        <div className='title'>Füber Eats</div>    
+ < FaShoppingCart className='cart'/>
+        </header>
+        
+      <p>Get food now!</p>
+        <Delivery />
+      </div>
     </>
   );
 }
 
-export default App;
+
