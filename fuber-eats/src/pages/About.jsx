@@ -1,9 +1,9 @@
 import React from "react";
-import Akeel from './images/Akeel.jpeg';
-import Chelsea from './images/Chelsea.jpeg';
-import Khris from './images/Khris.jpeg';
-import Nichole from './images/Nichole.png';
-import Tony from './images/Tony.png';
+import Akeel from '../images/Akeel.jpeg';
+import Chelsea from '../images/Chelsea.jpeg';
+import Khris from '../images/Khris.jpeg';
+import Nichole from '../images/Nichole.png';
+import Tony from '../images/Tony.png';
 
 export default function About() {
 

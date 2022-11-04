@@ -1,11 +1,7 @@
-import Menu from "./Menu.jsx"
-import Delivery from './Delivery.jsx';
-import Cart from "./Cart.jsx";
 import './App.css';
-import About from "./About";
+import About from "./pages/About";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
-// import Menu from "./components/Menu";
 import { Routes, Route } from "react-router-dom";
 import Delivery from "./pages/Delivery";
 
