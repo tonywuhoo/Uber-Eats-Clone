@@ -3,6 +3,9 @@ import React from "react"
 export default function Menu() {
 
   
+  const handleClick = () => {
+    
+  }
   
   return (
   <div>
@@ -13,7 +16,7 @@ export default function Menu() {
             <li>Drinks</li>
             <li>Desserts</li>
           </ul>
-      <div className="hamburger">
+      <div className="hamburger" onClick={handleClick}>
       <span className="bar"></span>
       <span className="bar"></span>
       <span className="bar"></span>

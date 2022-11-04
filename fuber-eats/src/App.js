@@ -1,7 +1,6 @@
-import { FaShoppingCart } from 'react-icons/fa';
 import Menu from "./Menu.jsx"
 import Delivery from './Delivery.jsx';
-
+import Cart from "./Cart.jsx";
 import './App.css';
 
 export default function Home() {
@@ -11,12 +10,11 @@ export default function Home() {
         backgroundImage: "url(/fast-food.png)"
         }}>
         <header>
-          <Menu/>
+          <Menu className="menu"/>
         <div className='title'>Füber Eats</div>    
- < FaShoppingCart className='cart'/>
+ < Cart className='cart'/>
         </header>
         
-      <p>Get food now!</p>
         <Delivery />
       </div>
     </>

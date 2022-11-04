@@ -1,13 +1,15 @@
 import React from "react"
+import { FaMapPin } from 'react-icons/fa';
 
 export default function Delivery() {
 
   return (
     <div>
+      <p>Get food now!</p>
       <form id="form">
-      <p>
+        <p>
+         <FaMapPin className="pin"/>
         <input className="delivery" type="text"
-               name="lot"
             placeholder="Enter delivery address" />
           <button>Find Food</button>
         </p>  
