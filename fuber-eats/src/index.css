@@ -1,44 +1,48 @@
-/* body {
+.app {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
-
-.App {
-  background-image: url("https://files.slack.com/files-pri/T0351JZQ0-F04900ZRTSB/fast-food.png");
-  position: fixed;
-  min-width: 100%;
-  min-height: 100%;
-  background-size: cover;
-  background-position: center;
-  font-family: 'Varela Round', sans-serif;
-}
-
-header {
-  height: 35px;
-  justify-content: space-between;
-  text-align: center;
+body {
+  margin: 0;
   display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background-color: aquamarine;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 15px;
 }
-.title {
-  font-size: x-large;
-  font-weight: bold;
+
+.logo {
+   height: 30px;
+  width: 50px;
+  background-image: url("../public/logo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: none;
 }
 
-.cart {
-  font-size: larger;
+.home {
+  background-color: red;
+  height: 100vh;
+  width: 100%;
+  background-image: url("https://4brosgr.com/wp-content/uploads/2020/01/UberEats_About.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: none;
+}
+
+.home {
+  position: relative;
+}
+
+.address {
+  position: absolute;
+  top: 20%;
+
 }
 
 .bar {
@@ -50,63 +54,8 @@ header {
   transition: all 0.3s ease;
   background-color: rgb(6, 8, 8);
 }
-.hamburger {
-  display: none;
-  cursor: pointer;
-}
-.menu {
-  position:fixed;
-  right: -100%;
-  top: 70px;
-  gap: 0;
-  flex-direction: column;
-  background-color: #262626;
-  width: 25%;
-  text-align: center;
-  transition: 0.3s;
-}
-.menu-item{
-position: relative;
-  margin: 12px 0;
-}
-.menu.active{
-  right: 0;
-}
-
-.menu-link {
-  transition: 0.3 ease-out;
-}
-
-.menu-link:hover{
-color: azure;
-}
-.hamburger{
-  display:block;
-}
-.hamburger.active .bar:nth-child(2){
-  opacity: 0;
-}
-
-.hamburger.active .bar:nth-child(1){
-  transform: translateY(8px) rotate(45deg);
-}
-
-.hamburger.active .bar:nth-child(3){
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-p {
-  font-size: xx-large;
-  font-weight:bolder;
-  position: relative;
-  top: 200px;
-  margin-left: 40px;
-  margin-bottom: 0;
-}
-.delivery {
-  border-radius: 5px;
-  width: 250px;
-  height: 50px;
+.address {
+  
 }
 button {
   background-color: #020202;
@@ -117,7 +66,10 @@ button {
   margin-left: 5px;
 }
 
-.pin {
-  position: relative;
-  margin-top: 2px;
-} */
+.input {
+  width: 100%;
+  border-radius: 5px;
+  width: 250px;
+  height: 50px;
+  
+}
