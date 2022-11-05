@@ -7,12 +7,14 @@ body {
 .navbar {
   background-color: rgb(216, 221, 220);
   display: flex;
-  padding: 15px;
+  padding: 10px;
   align-items: center;
+  align-content:space-between;
 }
 .logo {
   font-size: xx-large;
   font-weight: bolder;
+  margin-left: 25px;
 }
 .home {
   background-color: red;
@@ -36,8 +38,11 @@ body {
   padding-left: 15px;
   font-weight: bolder;
   font-size: xx-large;
+  margin-left: 20px;
 }
-
+.hamburger {
+  margin-left: 10px;
+}
 .bar {
   display: flex;
   width: 25px;
@@ -53,4 +58,5 @@ body {
   border-radius: 5px;
   width: 250px;
   height: 50px;
+  margin-left: 20px;
 }

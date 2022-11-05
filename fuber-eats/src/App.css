@@ -17,17 +17,15 @@ header {
   display: flex;
   padding: 15px;
 }
-.title {
-  font-size: x-large;
-  font-weight: bold;
-}
 
 .cart {
   font-size:x-large;
+  margin-left: 25px;
 }
 
-.Login {
-  
+.login {
+  margin-right: 25px;
+  margin-left: 875px;
 }
 
 .register {
