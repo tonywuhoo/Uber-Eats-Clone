@@ -1,16 +1,20 @@
 import React from 'react'
 import { FaShoppingCart } from 'react-icons/fa';
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <div className='navbar'>
+      
       <div className='hamburger'>
         <span className="bar"></span>
         <span className="bar"></span>
-        <span className="bar"></span>
-      </div>
+          <span className="bar"></span>
+          </div>
       <div className="logo">Fübar Eats</div>
-      < FaShoppingCart className='cart'/>
-    </div>
+      <button className='login'>Login</button>
+      <Link to="/register">Register</Link>
+        < FaShoppingCart className='cart' />
+        </div>
   )
 }
