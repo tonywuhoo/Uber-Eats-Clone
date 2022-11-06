@@ -20,7 +20,7 @@ function App() {
   const [LoginPassword, setLoginPassword] = useState("")
   const [LoginConfirmPassword, setLoginConfirmPassword] = useState("")
   const [Encrypted, setEncrypted] = useState("")
-
+  const [userHash, setuserHash] = useState("")
   return (
     <div className="App">
       <Navbar />
@@ -52,6 +52,8 @@ function App() {
           setLoginStatus={setLoginStatus}
           Encrypted={Encrypted}
           setEncrypted={setEncrypted}
+          userHash={userHash}
+          setuserHash = {setuserHash}
         />} />
       </Routes>
     </div>

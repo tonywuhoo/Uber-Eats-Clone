@@ -41,10 +41,10 @@ export default function Register(props) {
         //Then sets LoginStatus === true
         //Then sets userHash = sha256(props.RegisterUser + props.RegisterPassword)
         //This will be implemented when userdatabase goes live
-        const Hashing = async event => {
+        const RegisterHashing = async event => {
           props.setEncrypted(await sha256(props.RegisterUser + props.RegisterPassword))
         }
-        Hashing()
+        RegisterHashing()
         props.setLoginStatus(true)
         alert("Registered and Logged in!")
         document.getElementById("username-register").value = ""
@@ -65,12 +65,34 @@ export default function Register(props) {
     if (props.LoginStatus === true) {
       alert("You are logged in already!")
     }
+    if (props.LoginConfirmPassword !== props.LoginPassword || props.LoginUser.length < 1) {
+      alert("Passwords do not match or Username is blank!")
+    }
+    else {
+      const LoginHashing = async event => {
+        props.setEncrypted(await sha256(props.RegisterUser + props.RegisterPassword))
+      }
+      LoginHashing()
+      // Once prelimintary parameters met, we take Encrypted hash, fetch userdata base, and see if theres a match. 
+      // If there is a match, setuserHash(hash)
+      // If there is no match, alert("No such account exist, go create an account")
+      // Then set login status === true
+      alert("Login feature currently down...")
+        document.getElementById("username-login").value = ""
+        document.getElementById("password-login").value = ""
+        document.getElementById("confirmpassword-login").value = ""
+        props.setLoginConfirmPassword("")
+        props.setLoginPassword("")
+        props.setLoginUser("")
+    }
   }
   const Login = event => {
 
   }
   const doLogOut = event => {
     props.setLoginStatus(false)
+    props.setEncrypted("")
+    alert("Logged out sucessfully")
   }
   return (
     <div className='LoginRegister'>
@@ -96,7 +118,7 @@ export default function Register(props) {
         <input type="text" id="username-login" onChange={HandleLogin}></input>
         <br></br>
         <label htmlFor="doLogin">Password: </label>
-        <input type="text" id="password-login" onChange={HandleLogin}></input>
+        <input type="password" id="password-login" onChange={HandleLogin}></input>
         <br></br>
         <label htmlFor="doLogin">Confirm: </label>
         <input type="password" id="confirmpassword-login" onChange={HandleLogin}></input>
