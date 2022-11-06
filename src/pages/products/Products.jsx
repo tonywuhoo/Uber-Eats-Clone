@@ -1,6 +1,7 @@
 import React from 'react'
 import "./products.css"
 import { useState, useEffect } from 'react'
+import Pagination from './Pagination'
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -24,6 +25,7 @@ export default function Products() {
  const currentProducts = products.slice(firstProductIndex, lastProductIndex);
 
   return (
+    <div>
     <div className='products'>
       {
       currentProducts.map((product, index) => {
@@ -37,8 +39,8 @@ export default function Products() {
         )
       })
     }
-
-    
+    </div>
+    <Pagination totalProducts={products.length} productsPerPage={productsPerPage}/>
     </div>
   )
 }

@@ -3,13 +3,18 @@ import Products from './Products';
 
 function Pagination({totalProducts, productsPerPage}) {
   let pages = [];
-  let i;
-  
-  for(let int = 1; i <= Math.ceil(totalProducts/productsPerPage); i++){
+
+  for(let i = 1; i <= Math.ceil(totalProducts/productsPerPage); i++){
     pages.push(i)
   }
   return (
-    <div>Pagination</div>
+    <div>
+      {
+        pages.map((page, index) => {
+          return <button key={index}>{page}</button>
+        })
+      }
+    </div>
   )
 }
 
