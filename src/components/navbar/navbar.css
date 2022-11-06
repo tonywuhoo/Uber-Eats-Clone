@@ -1,7 +1,7 @@
 .navbar {
   background-color: rgb(216, 221, 220);
   display: flex;
-  padding: 10px;
+  padding: 20px;
   align-items: center;
   align-content:space-between;
 }
@@ -10,6 +10,35 @@
   font-weight: bolder;
   margin-left: 25px;
 }
+
+.navbar a {
+  text-decoration: none;
+}
+
+.logo a {
+  color: rgb(6, 8, 8)
+}
+
+.btn {
+  background-color: whitesmoke;
+  border: none;
+  border-radius: 25px;
+}
+
+.btn a {
+  color: black;
+  font-size: 1.1rem;
+}
+
+.btn:hover {
+  background-color: rgb(6, 8, 8);
+  cursor: pointer;
+}
+
+.btn:hover a {
+  color:whitesmoke;
+}
+
 
 
 header {
