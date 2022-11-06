@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 
 export default function Products() {
   const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage, setProductsPerpage] = useState(20);
 
   useEffect(() => {
     fetch('https://fubereats-backend-production.up.railway.app/products')
@@ -17,10 +19,14 @@ export default function Products() {
        });
  }, []);
 
+ const lastProductIndex = currentPage * productsPerPage;
+ const firstProductIndex = lastProductIndex - productsPerPage;
+ const currentProducts = products.slice(firstProductIndex, lastProductIndex);
+
   return (
     <div className='products'>
       {
-      products.map((product, index) => {
+      currentProducts.map((product, index) => {
         return (
           <div>
           <h2>{product.name}</h2>
@@ -31,6 +37,8 @@ export default function Products() {
         )
       })
     }
+
+    
     </div>
   )
 }
