@@ -3,18 +3,15 @@ import sha256 from 'js-sha256'
 import axios from 'axios';
 
 export default function Register(props) {
-  // let config = {
-  //   headers: {
-  //      'Content-Type': 'application/x-www-form-urlencoded',
-  //   }
-  // }
-  const Check = event => {
-    axios.post("http://localhost:3003/users", {'hash':'testing'})
-      .then(response => {
-      console.log(response.data)
-      })
+  let config = {
+    headers: {
+       'Content-Type': 'application/x-www-form-urlencoded',
+    }
   }
-  const ResetParameters = async event => {
+  const Check = event => {
+    console.log(props.Encrypted)
+  }
+  const ResetParameters = async () => {
     document.getElementById("username-register").value = ""
     document.getElementById("password-register").value = ""
     document.getElementById("confirmpassword-register").value = ""
@@ -53,7 +50,7 @@ export default function Register(props) {
 
   }
 
-  const doRegister =  async event => {
+  const doRegister =  async (event) => {
     await event.preventDefault()
     console.log("Registering...")
     if (props.LoginStatus === true) {
@@ -61,24 +58,28 @@ export default function Register(props) {
     }
     else {
       if (props.RegisterPassword === props.RegisterConfirmPassword && props.RegisterUser.length > 0) {
-        await props.setEncrypted(sha256(props.RegisterUser + props.RegisterPassword)).then(response => {
-          console.log(props.Encrypted)
+        axios.get("http://localhost:3003/users")
+          .then(response => {
+            console.log(response.data)
+            props.setEncrypted(sha256(props.RegisterUser + props.RegisterPassword))
+            return response.data
+          })
+          .then(data => {
+            axios.post("http://localhost:3003/users", {'hash': "Testing"})
+            .then(response => {
+            console.log(response.data)
+            })
+            props.setLoginStatus(true)
+            ResetParameters()
+            alert("Registered and Logged in ...")
         })
-        await ResetParameters()
-        await props.setLoginStatus(true)
-      //   axios.post("http://localhost:3003/users", {'hash': props.Encrypted})
-      //   .then(response => {
-      //   console.log(props.Encrypted)
-      //   console.log(response.data)
-      // })
       }
       else {
         alert("Passwords do not match, or username field is empty")
       }
     }
   }
-  let Test = doRegister()
-  console.log(Test)
+
 
 
   const doLogin = event => {
