@@ -1,7 +1,34 @@
 import React from 'react'
 import sha256 from 'js-sha256'
+import axios from 'axios';
 
 export default function Register(props) {
+  // let config = {
+  //   headers: {
+  //      'Content-Type': 'application/x-www-form-urlencoded',
+  //   }
+  // }
+  const Check = event => {
+    axios.post("http://localhost:3003/users", {'hash':'testing'})
+      .then(response => {
+      console.log(response.data)
+      })
+  }
+  const ResetParameters = async event => {
+    document.getElementById("username-register").value = ""
+    document.getElementById("password-register").value = ""
+    document.getElementById("confirmpassword-register").value = ""
+    props.setRegisterConfirmPassword("")
+    props.setRegisterPassword("")
+    props.setRegisterUser("")
+    document.getElementById("username-login").value = ""
+    document.getElementById("password-login").value = ""
+    document.getElementById("confirmpassword-login").value = ""
+    props.setLoginConfirmPassword("")
+    props.setLoginPassword("")
+    props.setLoginUser("")
+
+  }
   const HandleRegister = event => {
     if (event.target.id === "username-register") {
       props.setRegisterUser(event.target.value)
@@ -26,39 +53,34 @@ export default function Register(props) {
 
   }
 
-  const doRegister =  event => {
-    event.preventDefault()
+  const doRegister =  async event => {
+    await event.preventDefault()
     console.log("Registering...")
     if (props.LoginStatus === true) {
       alert("You are logged in, log out to make an account!")
     }
     else {
       if (props.RegisterPassword === props.RegisterConfirmPassword && props.RegisterUser.length > 0) {
-        //Hashes Username,Password combination, Fetches User database and compares if exists
-        //If exist, alert error
-        //If does not exist, creates a POST request to User database with an empty Product array
-        //And inserts the Hash generated with user+pw combination
-        //Then sets LoginStatus === true
-        //Then sets userHash = sha256(props.RegisterUser + props.RegisterPassword)
-        //This will be implemented when userdatabase goes live
-        const RegisterHashing = async event => {
-          props.setEncrypted(await sha256(props.RegisterUser + props.RegisterPassword))
-        }
-        RegisterHashing()
-        props.setLoginStatus(true)
-        alert("Registered and Logged in!")
-        document.getElementById("username-register").value = ""
-        document.getElementById("password-register").value = ""
-        document.getElementById("confirmpassword-register").value = ""
-        props.setRegisterConfirmPassword("")
-        props.setRegisterPassword("")
-        props.setRegisterUser("")
+        await props.setEncrypted(sha256(props.RegisterUser + props.RegisterPassword)).then(response => {
+          console.log(props.Encrypted)
+        })
+        await ResetParameters()
+        await props.setLoginStatus(true)
+      //   axios.post("http://localhost:3003/users", {'hash': props.Encrypted})
+      //   .then(response => {
+      //   console.log(props.Encrypted)
+      //   console.log(response.data)
+      // })
       }
       else {
         alert("Passwords do not match, or username field is empty")
       }
     }
   }
+  let Test = doRegister()
+  console.log(Test)
+
+
   const doLogin = event => {
     event.preventDefault()
     console.log("Logging in....")
@@ -69,22 +91,19 @@ export default function Register(props) {
       alert("Passwords do not match or Username is blank!")
     }
     else {
-      const LoginHashing = async event => {
-        props.setEncrypted(await sha256(props.RegisterUser + props.RegisterPassword))
-      }
-      LoginHashing()
-      // Once prelimintary parameters met, we take Encrypted hash, fetch userdata base, and see if theres a match. 
-      // If there is a match, setuserHash(hash)
-      // If there is no match, alert("No such account exist, go create an account")
-      // Then set login status === true
-      alert("Login feature currently down...")
-        document.getElementById("username-login").value = ""
-        document.getElementById("password-login").value = ""
-        document.getElementById("confirmpassword-login").value = ""
-        props.setLoginConfirmPassword("")
-        props.setLoginPassword("")
-        props.setLoginUser("")
+
+
+    const LoginHashing = async event => {
+      props.setEncrypted(await sha256(props.RegisterUser + props.RegisterPassword))
     }
+    LoginHashing()
+    // Once prelimintary parameters met, we take Encrypted hash, fetch userdata base, and see if theres a match. 
+    // If there is a match, setuserHash(hash)
+    // If there is no match, alert("No such account exist, go create an account")
+    // Then set login status === true
+    alert("Login feature currently down...")
+    ResetParameters()
+  }
   }
   const Login = event => {
 
@@ -128,6 +147,9 @@ export default function Register(props) {
       <br></br>
       <button onClick={doLogOut}>
         Log Out
+      </button>
+      <button onClick={Check}>
+        Check
       </button>
     </div>
   )
