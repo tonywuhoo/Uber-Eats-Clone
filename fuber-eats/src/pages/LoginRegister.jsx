@@ -110,9 +110,14 @@ export default function Register(props) {
 
   }
   const doLogOut = event => {
-    props.setLoginStatus(false)
-    props.setEncrypted("")
-    alert("Logged out sucessfully")
+    if (props.LoginStatus === false) {
+      alert(("Already logged out"))
+    }
+    if (props.LoginStatus === true){
+      props.setLoginStatus(false)
+      props.setEncrypted("")
+      alert("Logged out sucessfully")
+    }
   }
   return (
     <div className='LoginRegister'>
