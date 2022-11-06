@@ -10,10 +10,10 @@ export default function Navbar() {
         <span className="bar"></span>
         <span className="bar"></span>
       </div>
-      <div className="logo"><Link class="links" to="/">Fübar Eats</Link></div>
+      <div className="logo"><Link className="links" to="/">Fübar Eats</Link></div>
     <button className='login'><Link to="/LoginRegister">Login</Link></button>
     <button className=""><Link to="/LoginRegister">Register</Link></button>
-    <Link class ="links" to="/ShoppingCart">< FaShoppingCart className='cart' /></Link>
+    <Link className="links" to="/ShoppingCart">< FaShoppingCart className='cart' /></Link>
     </div>
   )
 }
