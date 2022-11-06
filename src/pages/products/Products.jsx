@@ -40,7 +40,7 @@ export default function Products() {
       })
     }
     </div>
-    <Pagination totalProducts={products.length} productsPerPage={productsPerPage}/>
+    <Pagination totalProducts={products.length} productsPerPage={productsPerPage} setCurrentPage={setCurrentPage}/>
     </div>
   )
 }

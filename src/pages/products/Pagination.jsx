@@ -1,7 +1,9 @@
+// https://www.youtube.com/watch?v=wAGIOCqS8tk (pagination tutorial)
+
 import React from 'react'
 import Products from './Products';
 
-function Pagination({totalProducts, productsPerPage}) {
+function Pagination({totalProducts, productsPerPage, setCurrentPage}) {
   let pages = [];
 
   for(let i = 1; i <= Math.ceil(totalProducts/productsPerPage); i++){
@@ -11,7 +13,7 @@ function Pagination({totalProducts, productsPerPage}) {
     <div>
       {
         pages.map((page, index) => {
-          return <button key={index}>{page}</button>
+          return <button key={index} onClick={() => setCurrentPage(page)}>{page}</button>
         })
       }
     </div>
