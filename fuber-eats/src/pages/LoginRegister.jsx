@@ -1,6 +1,5 @@
 import React from 'react'
 import sha256 from 'js-sha256'
-import { useState } from "react"
 
 export default function Register(props) {
   const HandleRegister = event => {
@@ -46,6 +45,14 @@ export default function Register(props) {
           props.setEncrypted(await sha256(props.RegisterUser + props.RegisterPassword))
         }
         Hashing()
+        props.setLoginStatus(true)
+        alert("Registered and Logged in!")
+        document.getElementById("username-register").value = ""
+        document.getElementById("password-register").value = ""
+        document.getElementById("confirmpassword-register").value = ""
+        props.setRegisterConfirmPassword("")
+        props.setRegisterPassword("")
+        props.setRegisterUser("")
       }
       else {
         alert("Passwords do not match, or username field is empty")
@@ -61,6 +68,9 @@ export default function Register(props) {
   }
   const Login = event => {
 
+  }
+  const doLogOut = event => {
+    props.setLoginStatus(false)
   }
   return (
     <div className='LoginRegister'>
@@ -93,6 +103,10 @@ export default function Register(props) {
         <br></br>
         <input type="submit" />
       </form>
+      <br></br>
+      <button onClick={doLogOut}>
+        Log Out
+      </button>
     </div>
   )
 }
