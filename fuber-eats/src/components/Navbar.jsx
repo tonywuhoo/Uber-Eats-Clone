@@ -11,7 +11,7 @@ export default function Navbar() {
         <span className="bar"></span>
         <span className="bar"></span>
       </div>
-    <div className="logo">Fübar Eats</div>
+    <div className="logo"><Link class ="links" to="/">Fübar Eats</Link></div>
     <button className='login'><Link to="/register">Login</Link></button>
     <button className=""><Link to="/register">Register</Link></button>
     <Link class ="links" to="/ShoppingCart">< FaShoppingCart className='cart' /></Link>
