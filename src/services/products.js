@@ -3,7 +3,7 @@ import axios from "axios";
 export const getProducts = async () => {
   try {
     const response = await axios.get(
-      "https://soccer-standings-api-production.up.railway.app/leagues"
+      "https://fubereats-backend-production.up.railway.app/products"
     );
     // console.log(response.data);
     return response.data;
@@ -11,6 +11,18 @@ export const getProducts = async () => {
     throw error;
   }
 };
+
+// export const getLimitedProducts = async () => {
+//   try {
+//     const response = await axios.get(
+//       "https://fubereats-backend-production.up.railway.app/products"
+//     );
+//     // console.log(response.data);
+//     return response.data;
+//   } catch (error) {
+//     throw error;
+//   }
+// };
 
 // export const getLeague = async (id) => {
 //   try {
