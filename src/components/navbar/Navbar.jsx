@@ -12,8 +12,8 @@ export default function Navbar() {
         <span className="bar"></span>
       </div>
       <div className="logo"><Link className="links" to="/">Fübar Eats</Link></div>
-    <button className='login'><Link to="/LoginRegister">Login</Link></button>
-    <button className=""><Link to="/LoginRegister">Register</Link></button>
+    <button className='login btn'><Link to="/LoginRegister">Login</Link></button>
+    <button className="reg btn"><Link to="/LoginRegister">Register</Link></button>
     <Link className="links" to="/ShoppingCart">< FaShoppingCart className='cart' /></Link>
     </div>
   )
