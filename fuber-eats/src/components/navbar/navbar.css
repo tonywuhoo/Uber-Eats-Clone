@@ -1,0 +1,104 @@
+.navbar {
+  background-color: rgb(216, 221, 220);
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  align-content:space-between;
+}
+.logo {
+  font-size: xx-large;
+  font-weight: bolder;
+  margin-left: 25px;
+}
+
+
+header {
+  height: 35px;
+  justify-content: space-between;
+  text-align: center;
+  display: flex;
+  padding: 15px;
+}
+
+.cart {
+  font-size:x-large;
+  margin-left: 25px;
+}
+
+.login {
+  margin-right: 25px;
+  margin-left: 875px;
+}
+
+.register {
+  margin: 800px;
+}
+.bar {
+  display: flex;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background-color: rgb(6, 8, 8);
+}
+
+
+.menu {
+  position:fixed;
+  right: -100%;
+  top: 70px;
+  gap: 0;
+  flex-direction: column;
+  background-color: #262626;
+  width: 25%;
+  text-align: center;
+  transition: 0.3s;
+}
+.menu-item{
+position: relative;
+  margin: 12px 0;
+}
+.menu.active{
+  right: 0;
+}
+
+.menu-link {
+  transition: 0.3 ease-out;
+}
+
+.menu-link:hover{
+color: azure;
+}
+.hamburger{
+  display:block;
+}
+.hamburger.active .bar:nth-child(2){
+  opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(1){
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(3){
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+p {
+  font-size: xx-large;
+  font-weight:bolder;
+  position: relative;
+  top: 200px;
+  margin-left: 40px;
+  margin-bottom: 0;
+}
+
+button {
+  background-color: #020202;
+  color: azure;
+  border-radius: 5px;
+  width: 100px;
+  height: 50px;
+  margin-left: 5px;
+}
