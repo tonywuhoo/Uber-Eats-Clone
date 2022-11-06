@@ -1,7 +1,8 @@
 import React from 'react'
+import sha256 from 'js-sha256'
+import { useState } from "react"
 
 export default function Register(props) {
-
   const HandleRegister = event => {
     if (event.target.id === "username-register") {
       props.setRegisterUser(event.target.value)
@@ -26,18 +27,37 @@ export default function Register(props) {
 
   }
 
-  const doRegister = event => {
+  const doRegister =  event => {
     event.preventDefault()
     console.log("Registering...")
     if (props.LoginStatus === true) {
       alert("You are logged in, log out to make an account!")
     }
     else {
-      
+      if (props.RegisterPassword === props.RegisterConfirmPassword && props.RegisterUser.length > 0) {
+        //Hashes Username,Password combination, Fetches User database and compares if exists
+        //If exist, alert error
+        //If does not exist, creates a POST request to User database with an empty Product array
+        //And inserts the Hash generated with user+pw combination
+        //Then sets LoginStatus === true
+        //Then sets userHash = sha256(props.RegisterUser + props.RegisterPassword)
+        //This will be implemented when userdatabase goes live
+        const Hashing = async event => {
+          props.setEncrypted(await sha256(props.RegisterUser + props.RegisterPassword))
+        }
+        Hashing()
+      }
+      else {
+        alert("Passwords do not match, or username field is empty")
+      }
     }
   }
   const doLogin = event => {
     event.preventDefault()
+    console.log("Logging in....")
+    if (props.LoginStatus === true) {
+      alert("You are logged in already!")
+    }
   }
   const Login = event => {
 

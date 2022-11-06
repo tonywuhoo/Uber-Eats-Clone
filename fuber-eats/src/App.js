@@ -13,19 +13,22 @@ import { useState } from "react"
 function App() {
   const [address, setAddress] = useState("")
   const [LoginStatus, setLoginStatus] = useState(false)
-  const [Encrypted, setEncrypted] = useState("")
   const [RegisterUser, setRegisterUser] = useState("")
   const [RegisterPassword, setRegisterPassword] = useState("")
   const [RegisterConfirmPassword, setRegisterConfirmPassword] = useState("")
   const [LoginUser, setLoginUser] = useState("")
   const [LoginPassword, setLoginPassword] = useState("")
   const [LoginConfirmPassword, setLoginConfirmPassword] = useState("")
+  const [Encrypted, setEncrypted] = useState("")
 
   return (
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home setAddress={setAddress} />} />
+        <Route path="/" element={<Home
+          setAddress={setAddress}
+          address = {address}
+        />} />
         <Route path="/delivery" element={<Delivery />} />
         <Route path="/About" element={<About />} />
         <Route path="/Products" element={<Products />} />
