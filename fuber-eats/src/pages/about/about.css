@@ -1,0 +1,27 @@
+.about-container{
+  display: flex;
+  flex-direction: column;
+  margin: 100px;
+  height: 500px;
+  max-width: 100%;
+  gap: 50px;
+  overflow: scroll;
+}
+
+.about-header{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.about-image{
+  float: left;
+  height: 250px;
+  width: 250px;
+}
+
+.about-title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

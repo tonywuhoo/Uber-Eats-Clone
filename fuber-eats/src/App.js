@@ -1,12 +1,12 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
+import Navbar from "./components/navbar/Navbar.jsx";
+import Home from "./pages/home/Home";
 import { Routes, Route } from "react-router-dom";
-import Delivery from "./pages/Delivery";
-import LoginRegister from "./pages/LoginRegister";
-import About from "./pages/About";
-import Products from "./pages/Products";
-import Cart from "./pages/Cart";
+import Delivery from "./pages/delivery/Delivery";
+import LoginRegister from "./pages/loginregister/LoginRegister";
+import About from "./pages/about/About";
+import Products from "./pages/products/Products";
+import Cart from "./pages/cart/Cart";
 import { getProducts } from "./services/products";
 import { useEffect, useState } from "react";
 

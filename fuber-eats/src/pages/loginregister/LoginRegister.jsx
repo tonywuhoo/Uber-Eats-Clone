@@ -1,6 +1,7 @@
 import {React, useState} from 'react'
 import sha256 from 'js-sha256'
 import axios from 'axios';
+import "./loginregister.css"
 
 export default function LoginRegister() {
   const [address, setAddress] = useState("");
