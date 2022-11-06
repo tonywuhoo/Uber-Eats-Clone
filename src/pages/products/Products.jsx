@@ -24,7 +24,7 @@ export default function Products() {
         return (
           <div>
           <h2>{product.name}</h2>
-          <img src={product.img} />
+          <img src={product.img} alt={product.name} />
           <h3>{product.price}</h3>
           <button>Add to Cart</button>
           </div>
