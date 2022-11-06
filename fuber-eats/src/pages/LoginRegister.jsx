@@ -1,124 +1,130 @@
-import React from 'react'
+import {React, useState} from 'react'
 import sha256 from 'js-sha256'
 import axios from 'axios';
 
-export default function Register(props) {
-  let config = {
-    headers: {
-       'Content-Type': 'application/x-www-form-urlencoded',
-    }
-  }
-  const Check = event => {
-    console.log(props.Encrypted)
-  }
-  const ResetParameters = async () => {
-    document.getElementById("username-register").value = ""
-    document.getElementById("password-register").value = ""
-    document.getElementById("confirmpassword-register").value = ""
-    props.setRegisterConfirmPassword("")
-    props.setRegisterPassword("")
-    props.setRegisterUser("")
-    document.getElementById("username-login").value = ""
-    document.getElementById("password-login").value = ""
-    document.getElementById("confirmpassword-login").value = ""
-    props.setLoginConfirmPassword("")
-    props.setLoginPassword("")
-    props.setLoginUser("")
+export default function LoginRegister() {
+  const [address, setAddress] = useState("");
+  const [LoginStatus, setLoginStatus] = useState(false);
+  const [RegisterUser, setRegisterUser] = useState("");
+  const [RegisterPassword, setRegisterPassword] = useState("");
+  const [RegisterConfirmPassword, setRegisterConfirmPassword] = useState("");
+  const [LoginUser, setLoginUser] = useState("");
+  const [LoginPassword, setLoginPassword] = useState("");
+  const [LoginConfirmPassword, setLoginConfirmPassword] = useState("");
+  const [Encrypted, setEncrypted] = useState("");
+  const [userHash, setuserHash] = useState("");
 
-  }
-  const HandleRegister = event => {
+let config = {
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  };
+  const Check = (event) => {
+    console.log(Encrypted);
+  };
+  const ResetParameters = async () => {
+    document.getElementById("username-register").value = "";
+    document.getElementById("password-register").value = "";
+    document.getElementById("confirmpassword-register").value = "";
+    setRegisterConfirmPassword("");
+    setRegisterPassword("");
+    setRegisterUser("");
+    document.getElementById("username-login").value = "";
+    document.getElementById("password-login").value = "";
+    document.getElementById("confirmpassword-login").value = "";
+    setLoginConfirmPassword("");
+    setLoginPassword("");
+    setLoginUser("");
+  };
+  const HandleRegister = (event) => {
     if (event.target.id === "username-register") {
-      props.setRegisterUser(event.target.value)
+      setRegisterUser(event.target.value);
     }
     if (event.target.id === "password-register") {
-      props.setRegisterPassword(event.target.value)
+      setRegisterPassword(event.target.value);
     }
     if (event.target.id === "confirmpassword-register") {
-      props.setRegisterConfirmPassword(event.target.value)
+      setRegisterConfirmPassword(event.target.value);
     }
-  }
-  const HandleLogin = event => {
+  };
+  const HandleLogin = (event) => {
     if (event.target.id === "username-login") {
-      props.setLoginUser(event.target.value)
+      setLoginUser(event.target.value);
     }
     if (event.target.id === "password-login") {
-      props.setLoginPassword(event.target.value)
+      setLoginPassword(event.target.value);
     }
     if (event.target.id === "confirmpassword-login") {
-      props.setLoginConfirmPassword(event.target.value)
+      setLoginConfirmPassword(event.target.value);
     }
+  };
 
-  }
-
-  const doRegister =  async (event) => {
-    await event.preventDefault()
-    console.log("Registering...")
-    if (props.LoginStatus === true) {
-      alert("You are logged in, log out to make an account!")
-    }
-    else {
-      if (props.RegisterPassword === props.RegisterConfirmPassword && props.RegisterUser.length > 0) {
-        axios.get("http://localhost:3003/users")
-          .then(response => {
-            console.log(response.data)
-            props.setEncrypted(sha256(props.RegisterUser + props.RegisterPassword))
-            return response.data
+  const doRegister = async (event) => {
+    await event.preventDefault();
+    console.log("Registering...");
+    if (LoginStatus === true) {
+      alert("You are logged in, log out to make an account!");
+    } else {
+      if (
+        RegisterPassword === RegisterConfirmPassword &&
+        RegisterUser.length > 0
+      ) {
+        axios
+          .get("http://localhost:3003/users")
+          .then((response) => {
+            console.log(response.data);
+            setEncrypted(sha256(RegisterUser + RegisterPassword));
+            return response.data;
           })
-          .then(data => {
-            axios.post("http://localhost:3003/users", {'hash': "Testing"})
-            .then(response => {
-            console.log(response.data)
-            })
-            props.setLoginStatus(true)
-            ResetParameters()
-            alert("Registered and Logged in ...")
-        })
+          .then((data) => {
+            axios
+              .post("http://localhost:3003/users", { hash: "Testing" })
+              .then((response) => {
+                console.log(response.data);
+              });
+            setLoginStatus(true);
+            ResetParameters();
+            alert("Registered and Logged in ...");
+          });
+      } else {
+        alert("Passwords do not match, or username field is empty");
       }
-      else {
-        alert("Passwords do not match, or username field is empty")
-      }
     }
-  }
+  };
 
-
-
-  const doLogin = event => {
-    event.preventDefault()
-    console.log("Logging in....")
-    if (props.LoginStatus === true) {
-      alert("You are logged in already!")
+  const doLogin = (event) => {
+    event.preventDefault();
+    console.log("Logging in....");
+    if (LoginStatus === true) {
+      alert("You are logged in already!");
     }
-    if (props.LoginConfirmPassword !== props.LoginPassword || props.LoginUser.length < 1) {
-      alert("Passwords do not match or Username is blank!")
+    if (LoginConfirmPassword !== LoginPassword || LoginUser.length < 1) {
+      alert("Passwords do not match or Username is blank!");
+    } else {
+      const LoginHashing = async (event) => {
+        setEncrypted(await sha256(RegisterUser + RegisterPassword));
+      };
+      LoginHashing();
+      // Once prelimintary parameters met, we take Encrypted hash, fetch userdata base, and see if theres a match.
+      // If there is a match, setuserHash(hash)
+      // If there is no match, alert("No such account exist, go create an account")
+      // Then set login status === true
+      alert("Login feature currently down...");
+      ResetParameters();
     }
-    else {
+  };
+  const Login = (event) => {};
+  const doLogOut = (event) => {
+    if (LoginStatus === false) {
+      alert("Already logged out");
+    }
+    if (LoginStatus === true) {
+      setLoginStatus(false);
+      setEncrypted("");
+      alert("Logged out sucessfully");
+    }
+  };
 
-
-    const LoginHashing = async event => {
-      props.setEncrypted(await sha256(props.RegisterUser + props.RegisterPassword))
-    }
-    LoginHashing()
-    // Once prelimintary parameters met, we take Encrypted hash, fetch userdata base, and see if theres a match. 
-    // If there is a match, setuserHash(hash)
-    // If there is no match, alert("No such account exist, go create an account")
-    // Then set login status === true
-    alert("Login feature currently down...")
-    ResetParameters()
-  }
-  }
-  const Login = event => {
-
-  }
-  const doLogOut = event => {
-    if (props.LoginStatus === false) {
-      alert(("Already logged out"))
-    }
-    if (props.LoginStatus === true){
-      props.setLoginStatus(false)
-      props.setEncrypted("")
-      alert("Logged out sucessfully")
-    }
-  }
   return (
     <div className='LoginRegister'>
       <form onSubmit={ doRegister }>
