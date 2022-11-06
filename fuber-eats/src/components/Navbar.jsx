@@ -9,12 +9,12 @@ export default function Navbar() {
       <div className='hamburger'>
         <span className="bar"></span>
         <span className="bar"></span>
-          <span className="bar"></span>
-          </div>
-      <div className="logo">Fübar Eats</div>
-      <button className='login'>Login</button>
-      <Link to="/register">Register</Link>
-        < FaShoppingCart className='cart' />
-        </div>
+        <span className="bar"></span>
+      </div>
+    <div className="logo">Fübar Eats</div>
+    <button className='login'><Link to="/register">Login</Link></button>
+    <button className=""><Link to="/register">Register</Link></button>
+    <Link class ="links" to="/ShoppingCart">< FaShoppingCart className='cart' /></Link>
+    </div>
   )
 }
