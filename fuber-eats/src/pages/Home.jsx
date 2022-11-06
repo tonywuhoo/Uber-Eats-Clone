@@ -17,7 +17,7 @@ export default function Home(props) {
     <div className='hungry'>Get Food Now!</div>
     <div className="address">
     <input className='input' type="text" onChange= { handleChange } name="Address" placeholder='Enter address here'/>
-    <button onClick = { submitAddress }><Link to="/Cart">Delivery</Link></button>
+    <button onClick = { submitAddress }><Link to="/Product">Delivery</Link></button>
     </div>
     </div>
   )
