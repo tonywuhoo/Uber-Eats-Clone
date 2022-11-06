@@ -7,8 +7,26 @@ import LoginRegister from "./pages/LoginRegister";
 import About from "./pages/About";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
+import { getProducts } from "./services/products";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [products, setProducts] = useState(null);
+
+  async function fetchProductsData() {
+    setProducts(await getProducts());
+  }
+
+  useEffect(() => {
+    fetchProductsData();
+  }, []);
+
+  if (!products) {
+    return "loading...";
+  } else {
+    console.log("complete: ", products);
+  }
+
   return (
     <div className="App">
       <Navbar />
