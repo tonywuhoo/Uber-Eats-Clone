@@ -11,7 +11,6 @@ export default function LoginRegister(props) {
   const [LoginUser, setLoginUser] = useState("");
   const [LoginPassword, setLoginPassword] = useState("");
   const [LoginConfirmPassword, setLoginConfirmPassword] = useState("")
-  const [Username, setUsername] = useState("Not logged in")
 
 
 
@@ -84,7 +83,7 @@ export default function LoginRegister(props) {
             setLoginStatus(true);
             props.setuserHash(props.Encrypted)
               ResetParameters();
-              setUsername(RegisterUser)
+              props.setUsername(RegisterUser)
             alert("Registered and Logged in ...");
         });
         }  
@@ -117,7 +116,7 @@ export default function LoginRegister(props) {
       userHashes.map((element) => {
         if (element === props.Encrypted) {
           props.setuserHash(props.Encrypted)
-          setUsername(LoginUser)
+          props.setUsername(LoginUser)
           setLoginStatus(true);
       }  
       })
@@ -129,14 +128,14 @@ export default function LoginRegister(props) {
   
   const doLogOut = (event) => {
     if (LoginStatus === false) {
-      setUsername("Not logged in")
+      props.setUsername("Not logged in")
       alert("Already logged out");
     }
     if (LoginStatus === true) {
       setLoginStatus(false);
       props.setEncrypted("");
       props.setuserHash("");
-      setUsername("Not logged in")
+      props.setUsername("Not logged in")
       alert("Logged out sucessfully");
     }
   };
@@ -144,7 +143,7 @@ export default function LoginRegister(props) {
   return (
     <div className='LoginRegister'>
       <h>
-        Welcome : {Username}
+        Welcome : {props.Username}
       </h>
       <form onSubmit={ doRegister }>
           Register Account :

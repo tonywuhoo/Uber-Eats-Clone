@@ -16,6 +16,7 @@ function App() {
   const [Encrypted, setEncrypted] = useState("");
   const [address, setAddress] = useState("");
   const [userHash, setuserHash] = useState("");
+  const [Username, setUsername] = useState("Not logged in")
 
   async function fetchProductsData() {
     setProducts(await getProducts());
@@ -48,6 +49,9 @@ function App() {
           setEncrypted={setEncrypted}
           userHash={userHash}
           setuserHash={setuserHash}
+          Username={Username}
+          setUsername={setUsername}
+
         />} />
         <Route path='/Products/:id' element={<ProductDetail />} />
       </Routes>
