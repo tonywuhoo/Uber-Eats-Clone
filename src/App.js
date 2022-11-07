@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   if (!products) {
-    return "loading...";
+    console.log("loading...");
   } else {
     console.log("complete: ", products);
   }
