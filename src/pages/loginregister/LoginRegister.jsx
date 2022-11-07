@@ -11,7 +11,6 @@ export default function LoginRegister(props) {
   const [LoginUser, setLoginUser] = useState("");
   const [LoginPassword, setLoginPassword] = useState("");
   const [LoginConfirmPassword, setLoginConfirmPassword] = useState("")
-  const [userHash, setuserHash] = useState("");
 
 
 
@@ -82,6 +81,7 @@ export default function LoginRegister(props) {
             .then((response) => {
             console.log(response.data);
             setLoginStatus(true);
+            props.setuserHash(props.Encrypted)
             ResetParameters();
             alert("Registered and Logged in ...");
         });
@@ -103,11 +103,23 @@ export default function LoginRegister(props) {
     if (LoginConfirmPassword !== LoginPassword || LoginUser.length < 1) {
       alert("Passwords do not match or Username is blank!");
     } else {
-      // Once prelimintary parameters met, we take Encrypted hash, fetch userdata base, and see if theres a match.
-      // If there is a match, setuserHash(hash)
-      // If there is no match, alert("No such account exist, go create an account")
-      // Then set login status === true
-      alert("Login feature currently down...");
+      fetch("https://fubereats-backend-production.up.railway.app/users")
+      .then((response) => {
+      return response.json();
+      })
+      .then((data) => {
+      let userHashes = []
+      data.map((element) => {
+      userHashes.push(element.hash)
+      })
+      userHashes.map((element) => {
+        if (element === props.Encrypted) {
+          props.setuserHash(props.Encrypted)
+          setLoginStatus(true);
+      }  
+      })
+      alert("Logged in!")
+      })
       ResetParameters();
     }
   };
@@ -119,6 +131,7 @@ export default function LoginRegister(props) {
     if (LoginStatus === true) {
       setLoginStatus(false);
       props.setEncrypted("");
+      props.setuserHash("");
       alert("Logged out sucessfully");
     }
   };
