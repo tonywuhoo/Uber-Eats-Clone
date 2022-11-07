@@ -2,22 +2,23 @@ import React from 'react'
 import "./products.css"
 import { useState, useEffect } from 'react'
 import Pagination from './Pagination'
+import { getProducts } from "../../services/products"
 
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerpage] = useState(20);
 
+  async function fetchProductsData() {
+    setProducts(await getProducts());
+  }
+  
   useEffect(() => {
-    fetch('https://fubereats-backend-production.up.railway.app/products')
-       .then((response) => response.json())
-       .then((data) => {
-          console.log(data);
-          setProducts(data);
-       })
-       .catch((err) => {
-          console.log(err.message);
-       });
+    try {
+      fetchProductsData();
+    } catch (err) {
+      throw err;
+    }
  }, []);
 
  const lastProductIndex = currentPage * productsPerPage;
@@ -30,11 +31,11 @@ export default function Products() {
       {
       currentProducts.map((product, index) => {
         return (
-          <div>
-          <h2>{product.name}</h2>
-          <img src={product.img} alt={product.name} />
-          <h3>{product.price}</h3>
-          <button>Add to Cart</button>
+          <div key={index}>
+            <h2>{product.name}</h2>
+            <img src={product.img} alt={product.name} />
+            <h3>{product.price}</h3>
+            <button>Add to Cart</button>
           </div>
         )
       })
