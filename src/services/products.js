@@ -12,6 +12,15 @@ export const getProducts = async () => {
   }
 };
 
+export const getProduct = async (id) => {
+  try {
+    const response = await axios.get(`https://fubereats-backend-production.up.railway.app/products/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 // export const getLimitedProducts = async () => {
 //   try {
 //     const response = await axios.get(

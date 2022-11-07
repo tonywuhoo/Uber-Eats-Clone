@@ -1,5 +1,5 @@
 import React from 'react'
-import "./products.css"
+import "./Products.css"
 import { useState, useEffect } from 'react'
 import Pagination from './Pagination'
 import { getProducts } from "../../services/products"
@@ -27,7 +27,7 @@ export default function Products() {
  const currentProducts = products.slice(firstProductIndex, lastProductIndex);
 
  function addToCart(product){
-  console.log(product);
+  console.log(product._id);
  }
 
  function getProductDetail(){
