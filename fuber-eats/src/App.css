@@ -44,43 +44,23 @@ header {
 
 .menu {
   position:fixed;
-  right: -100%;
-  top: 70px;
-  gap: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
   flex-direction: column;
-  background-color: #262626;
+  background-color: #b4b3b3;
   width: 25%;
+  height: 100%;
   text-align: center;
   transition: 0.3s;
+  z-index: 2;
 }
-.menu-item{
-position: relative;
-  margin: 12px 0;
-}
-.menu.active{
-  right: 0;
-}
-
-.menu-link {
-  transition: 0.3 ease-out;
-}
-
-.menu-link:hover{
-color: azure;
-}
-.hamburger{
-  display:block;
-}
-.hamburger.active .bar:nth-child(2){
-  opacity: 0;
-}
-
-.hamburger.active .bar:nth-child(1){
-  transform: translateY(8px) rotate(45deg);
-}
-
-.hamburger.active .bar:nth-child(3){
-  transform: translateY(-8px) rotate(-45deg);
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 p {

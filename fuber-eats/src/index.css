@@ -16,9 +16,9 @@ body {
   font-weight: bolder;
   margin-left: 25px;
 }
-.home {
+.skillet {
   background-color: red;
-  height: 100vh;
+  height: 850px;
   width: 100%;
   background-image: url("https://files.slack.com/files-pri/T0351JZQ0-F04900ZRTSB/fast-food.png");
   background-size: cover;
@@ -60,3 +60,4 @@ body {
   height: 50px;
   margin-left: 20px;
 }
+
