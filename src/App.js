@@ -17,6 +17,7 @@ function App() {
   const [address, setAddress] = useState("");
   const [userHash, setuserHash] = useState("");
   const [Username, setUsername] = useState("Not logged in")
+  const [LoginStatus, setLoginStatus] = useState(false);
 
   async function fetchProductsData() {
     setProducts(await getProducts());
@@ -51,6 +52,8 @@ function App() {
           setuserHash={setuserHash}
           Username={Username}
           setUsername={setUsername}
+          LoginStatus={LoginStatus}
+          setLoginStatus={setLoginStatus}
 
         />} />
         <Route path='/Products/:id' element={<ProductDetail />} />

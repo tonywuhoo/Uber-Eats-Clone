@@ -4,7 +4,6 @@ import axios from 'axios';
 import "./loginregister.css"
 
 export default function LoginRegister(props) {
-  const [LoginStatus, setLoginStatus] = useState(false);
   const [RegisterUser, setRegisterUser] = useState("");
   const [RegisterPassword, setRegisterPassword] = useState("");
   const [RegisterConfirmPassword, setRegisterConfirmPassword] = useState("");
@@ -56,7 +55,7 @@ export default function LoginRegister(props) {
   const doRegister = async (event) => {
     await event.preventDefault();
     console.log("Registering...");
-    if (LoginStatus === true) {
+    if (props.LoginStatus === true) {
       alert("You are logged in, log out to make an account!");
     } else {
       if (
@@ -80,7 +79,7 @@ export default function LoginRegister(props) {
             .post("https://fubereats-backend-production.up.railway.app/users", { hash: props.Encrypted })
             .then((response) => {
             console.log(response.data);
-            setLoginStatus(true);
+            props.setLoginStatus(true);
             props.setuserHash(props.Encrypted)
               ResetParameters();
               props.setUsername(RegisterUser)
@@ -98,8 +97,10 @@ export default function LoginRegister(props) {
   const doLogin = (event) => {
     event.preventDefault();
     console.log("Logging in....");
-    if (LoginStatus === true) {
+    if (props.LoginStatus === true) {
       alert("You are logged in already!");
+      ResetParameters();
+      return
     }
     if (LoginConfirmPassword !== LoginPassword || LoginUser.length < 1) {
       alert("Passwords do not match or Username is blank!");
@@ -117,22 +118,22 @@ export default function LoginRegister(props) {
         if (element === props.Encrypted) {
           props.setuserHash(props.Encrypted)
           props.setUsername(LoginUser)
-          setLoginStatus(true);
+          props.setLoginStatus(true);
       }  
       })
-      alert("Logged in!")
       })
+      alert("Logged in!")
       ResetParameters();
     }
   };
   
   const doLogOut = (event) => {
-    if (LoginStatus === false) {
+    if (props.LoginStatus === false) {
       props.setUsername("Not logged in")
       alert("Already logged out");
     }
-    if (LoginStatus === true) {
-      setLoginStatus(false);
+    if (props.LoginStatus === true) {
+      props.setLoginStatus(false);
       props.setEncrypted("");
       props.setuserHash("");
       props.setUsername("Not logged in")
