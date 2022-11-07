@@ -25,17 +25,21 @@ export default function Products() {
  const firstProductIndex = lastProductIndex - productsPerPage;
  const currentProducts = products.slice(firstProductIndex, lastProductIndex);
 
+ function addToCart(e){
+  console.log(e.target.parentElement.className);
+ }
+
   return (
     <div>
     <div className='products'>
       {
       currentProducts.map((product, index) => {
         return (
-          <div key={index}>
+          <div key={index} className={product._id}>
             <h2>{product.name}</h2>
             <img src={product.img} alt={product.name} />
             <h3>{product.price}</h3>
-            <button>Add to Cart</button>
+            <button className="product-cart" onClick={addToCart}>Add to Cart</button>
           </div>
         )
       })
