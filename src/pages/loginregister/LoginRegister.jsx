@@ -1,4 +1,4 @@
-import {React, useState} from 'react'
+import { React, useState} from 'react'
 import sha256 from 'js-sha256'
 import axios from 'axios';
 import "./loginregister.css"

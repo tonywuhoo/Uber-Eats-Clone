@@ -1,6 +1,24 @@
-.home {
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background-color: rgb(216, 221, 220);
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  align-content:space-between;
+}
+.logo {
+  font-size: xx-large;
+  font-weight: bolder;
+  margin-left: 25px;
+}
+.skillet {
   background-color: red;
-  height: 100vh;
+  height: 850px;
   width: 100%;
   background-image: url("https://files.slack.com/files-pri/T0351JZQ0-F04900ZRTSB/fast-food.png");
   background-size: cover;
@@ -44,3 +62,4 @@
   height: 50px;
   margin-left: 20px;
 }
+
