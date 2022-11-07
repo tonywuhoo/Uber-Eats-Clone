@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Menu from "./Menu";
-import "../../App.css";
+import Menu from "../Menu.jsx";
+import "./navbar.css";
 
 export default function Navbar() {
-  // const menuCollapsed = localStorage.getItem('menu-collapsed');
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleToggle = () => {
@@ -22,10 +21,20 @@ export default function Navbar() {
           <span className="bar"></span>
           <span className="bar"></span>
         </div>
-        <div className="logo">Fübar Eats</div>
-        <button className="login">Login</button>
-        <Link to="/register">Register</Link>
-        <FaShoppingCart className="cart" />
+        <div className="logo">
+          <Link className="links" to="/">
+            Fübar Eats
+          </Link>
+        </div>
+        <button className="login btn">
+          <Link to="/LoginRegister">Login</Link>
+        </button>
+        <button className="reg btn">
+          <Link to="/LoginRegister">Register</Link>
+        </button>
+        <Link className="links" to="/ShoppingCart">
+          <FaShoppingCart className="cart" />
+        </Link>
       </div>
     );
   }

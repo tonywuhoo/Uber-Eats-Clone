@@ -1,26 +1,44 @@
-import './App.css';
-import Home from "./pages/Home";
-import Navbar from "./components/navbar/Navbar";
-import Menu from "./components/navbar/Menu";
+import "./App.css";
+import Navbar from "./components/navbar/Navbar.jsx";
+import Home from "./pages/home/Home";
 import { Routes, Route } from "react-router-dom";
-import Delivery from "./pages/Delivery";
+import Delivery from "./pages/delivery/Delivery";
+import LoginRegister from "./pages/loginregister/LoginRegister";
+import About from "./pages/about/About";
+import Products from "./pages/products/Products";
+import Cart from "./pages/cart/Cart";
+import { getProducts } from "./services/products";
+import { useEffect, useState } from "react";
+import ProductDetail from './pages/productdetail/ProductDetail'
 
 function App() {
+  const [products, setProducts] = useState(null);
+
+  async function fetchProductsData() {
+    setProducts(await getProducts());
+  }
+
+  useEffect(() => {
+    fetchProductsData();
+  }, []);
+
+  if (!products) {
+    console.log("loading...");
+  } else {
+    console.log("complete: ", products);
+  }
+
   return (
     <div className="App">
-       <Navbar />
-       
-      {/* <Home /> */}
+      <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              
-            />
-          }
-        />
+        <Route path="/" element={<Home />} />
         <Route path="/delivery" element={<Delivery />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/Products" element={<Products />} />
+        <Route path="/Cart" element={<Cart />} />
+        <Route path="/LoginRegister" element={<LoginRegister />} />
+        <Route path='/:_id' element={<ProductDetail />} />
       </Routes>
     </div>
   );

@@ -1,0 +1,17 @@
+img {
+  max-width: 100%;
+}
+
+.products{
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 3em;
+  padding: 10px;
+  margin: 10px;
+}
+
+.product-div{
+  border: 10px solid black;
+  margin: 10px;
+  padding: 10px;
+}
