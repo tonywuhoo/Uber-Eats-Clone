@@ -32,7 +32,7 @@ export default function Navbar() {
         <button className="reg btn">
           <Link to="/LoginRegister">Register</Link>
         </button>
-        <Link className="links" to="/ShoppingCart">
+        <Link className="links" to="/Cart">
           <FaShoppingCart className="cart" />
         </Link>
       </div>
