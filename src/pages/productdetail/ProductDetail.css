@@ -1,0 +1,26 @@
+.product-detail{
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+}
+
+.product-detail-img{
+  float: left;
+  max-width: 500px;
+  max-height: 500px;
+}
+
+.name{
+  margin: 10px;
+  padding: 10px;
+}
+
+.description{
+  margin: 10px;
+  padding: 10px;
+}
+
+.price{
+  margin: 10px;
+  padding: 10px;
+}
