@@ -40,7 +40,7 @@ export default function Products() {
       {
       currentProducts.map((product) => {
         return (
-          <div key={product._id} className={product._id}>
+          <div key={product._id} className="product-div">
               <Link to={`/Products/${product._id}`}>
                 <h2>{product.name}</h2>
                 <img src={product.img} alt={product.name} />
