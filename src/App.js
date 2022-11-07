@@ -9,6 +9,7 @@ import Products from "./pages/products/Products";
 import Cart from "./pages/cart/Cart";
 import { getProducts } from "./services/products";
 import { useEffect, useState } from "react";
+import ProductDetail from './pages/productdetail/ProductDetail'
 
 function App() {
   const [products, setProducts] = useState(null);
@@ -37,6 +38,7 @@ function App() {
         <Route path="/Products" element={<Products />} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/LoginRegister" element={<LoginRegister />} />
+        <Route path='/:_id' element={<ProductDetail />} />
       </Routes>
     </div>
   );
