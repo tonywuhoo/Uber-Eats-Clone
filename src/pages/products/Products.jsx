@@ -3,6 +3,7 @@ import "./products.css"
 import { useState, useEffect } from 'react'
 import Pagination from './Pagination'
 import { getProducts } from "../../services/products"
+import { Link } from "react-router-dom";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -25,8 +26,8 @@ export default function Products() {
  const firstProductIndex = lastProductIndex - productsPerPage;
  const currentProducts = products.slice(firstProductIndex, lastProductIndex);
 
- function addToCart(e){
-  console.log(e.target.parentElement.className);
+ function addToCart(product){
+  console.log(product);
  }
 
  function getProductDetail(){
@@ -37,14 +38,16 @@ export default function Products() {
     <div>
     <div className='products'>
       {
-      currentProducts.map((product, index) => {
+      currentProducts.map((product) => {
         return (
-          <div key={index} onClick={getProductDetail} className="product-div">
-            <h2>{product.name}</h2>
-            <img src={product.img} alt={product.name} />
-            <h3>{product.price}</h3>
-            <button className="product-cart" onClick={addToCart}>Add to Cart</button>
-          </div>
+          <div key={product._id} className={product._id}>
+              <Link to={`/Products/${product._id}`}>
+                <h2>{product.name}</h2>
+                <img src={product.img} alt={product.name} />
+                <h3>{product.price}</h3>
+              </Link>
+              <button className="product-cart" onClick={() => addToCart(product)}>Add to Cart</button>
+            </div>
         )
       })
     }
