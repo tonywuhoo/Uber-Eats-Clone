@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Products from './Products';
+import './Pagination.css'
 
 function Pagination({totalProducts, productsPerPage, setCurrentPage}) {
   let pages = [];
@@ -13,7 +14,7 @@ function Pagination({totalProducts, productsPerPage, setCurrentPage}) {
     <div>
       {
         pages.map((page, index) => {
-          return <button key={index} onClick={() => setCurrentPage(page)}>{page}</button>
+          return <button key={index} onClick={() => setCurrentPage(page)} className="page-button">{page}</button>
         })
       }
     </div>
