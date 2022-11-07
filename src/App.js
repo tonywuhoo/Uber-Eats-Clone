@@ -13,6 +13,8 @@ import ProductDetail from './pages/productdetail/ProductDetail'
 
 function App() {
   const [products, setProducts] = useState(null);
+  const [Encrypted, setEncrypted] = useState("");
+  const [address, setAddress] = useState("");
 
   async function fetchProductsData() {
     setProducts(await getProducts());
@@ -32,12 +34,18 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home
+          address={address}
+          setAddress={setAddress}
+        />} />
         <Route path="/delivery" element={<Delivery />} />
         <Route path="/About" element={<About />} />
         <Route path="/Products" element={<Products />} />
         <Route path="/Cart" element={<Cart />} />
-        <Route path="/LoginRegister" element={<LoginRegister />} />
+        <Route path="/LoginRegister" element={<LoginRegister
+          Encrypted={Encrypted}
+          setEncrypted={setEncrypted}
+        />} />
         <Route path='/Products/:id' element={<ProductDetail />} />
       </Routes>
     </div>
