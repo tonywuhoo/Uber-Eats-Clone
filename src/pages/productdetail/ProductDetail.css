@@ -1,20 +1,11 @@
-.product-detail-img {
-  height: 300px;
-  width: 300px;
-}
-
-.product-detail {
-  display: flex;
-  border: 1px solid black;
-  margin: 50px;
-  padding: 50px;
-}
-
-.detail{
-  padding: 10px;
-}
-
 .back{
   margin-top: 100px;
   margin-left: 50px;
+}
+
+.detail-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
 }
