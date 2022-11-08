@@ -36,9 +36,8 @@ function App() {
     setProducts(await getProducts());
     // Step 1: set up services endpoint to get items from cart, then setCartItems => need to set cart items to pass into Cart component
   }
-
+  
   useEffect(() => {
-    console.log(userID)
     Cookies.set("Username", Username)
     fetch("https://fubereats-backend-production.up.railway.app/users")
       .then(response => {
@@ -108,7 +107,7 @@ function App() {
         <Route path="/Products/:id" element={<ProductDetail
           LoginStatus = {LoginStatus}
           setUserCart={setUserCart}
-          userCart={userCart}/>} />
+          userCart={userCart} />} />
       </Routes>
     </div>
   );
