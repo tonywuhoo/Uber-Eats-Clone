@@ -1,15 +1,12 @@
-.navbar {
-  background-color: rgb(216, 221, 220);
-  display: flex;
-  padding: 20px;
-  align-items: center;
-  align-content:space-between;
-}
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+
 .logo {
   font-size: xx-large;
   font-weight: bolder;
   margin-left: 25px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .navbar a {
@@ -17,7 +14,7 @@
 }
 
 .logo a {
-  color: rgb(6, 8, 8)
+  color: rgb(225, 233, 233)
 }
 
 .btn {
@@ -32,7 +29,7 @@
 }
 
 .btn:hover {
-  background-color: rgb(6, 8, 8);
+  background-color: rgb(216, 164, 61);
   cursor: pointer;
 }
 
@@ -52,7 +49,8 @@ header {
 .cart {
   font-size:x-large;
   margin-left: 25px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+  color: rgb(225, 233, 233)
 }
 
 .login {
@@ -68,7 +66,7 @@ header {
   width: 25px;
   height: 3px;
   margin: 5px auto;
-  background-color: rgb(6, 8, 8);
+  background-color: rgb(215, 225, 225);
 }
 
 
@@ -85,17 +83,17 @@ header {
   margin: 10px;
   border-radius: 15px;
   text-align: center;
-  transition-property: width;
-  transition-timing-function: ease-out;
-  transition-duration: 1.3s;
-  z-index: 10;
+  transform: translateX(-100);
+  transition: .3s;
+  z-index: 200;
 }
 .links {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin-top: 20px;
+  margin-top: 30px;
   text-align: center;
+  font-family: 'Varela Round', sans-serif;
 }
 
 p {
@@ -114,4 +112,5 @@ button {
   width: 100px;
   height: 50px;
   margin-left: 5px;
+  font-family: 'Varela Round', sans-serif;
 }
