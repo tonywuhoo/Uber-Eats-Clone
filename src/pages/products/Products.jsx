@@ -53,7 +53,7 @@ export default function Products() {
           {product.price}
          </Card.Text> 
          </Link>
-        <Button variant="primary">Add to Cart</Button>
+        <Button variant="primary" onClick={() => addToCart(product)}>Add to Cart</Button>
       </Card.Body>
     </Card>
           
