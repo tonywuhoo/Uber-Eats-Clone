@@ -1,49 +1,30 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
-import "../App.css"
+import "../components/navbar/navbar.css";
 
 
-
-export default function Menu({ handleToggle }) {
-  // const { countCartItems } = props
-  // const menuCollapsed = localStorage.getItem('menu-collapsed');
-  // const [isExpanded, setIsExpanded] = useState(menuCollapsed ? false : true);
-
+export default function Menu({ handleToggle }) {\
   return (
     <div className="navbar">
       <div className="menu" onClick={handleToggle}>
         <div className='links'>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
+        <Link to="/">Home</Link>
+      <Link to="/login">Login</Link>
+      <Link to="/LoginRegister">Register</Link>
+
           <Link to="/about">About Us</Link>
         </div>
       </div>
       <div className="logo">Fübar Eats</div>
-      <button className="login">Login</button>
-      <Link to="/register">Register</Link>
-      <FaShoppingCart className="cart" />
-    </div>
-  )
-  
-  {/* --------
-      <header className="row block center">
-      <div>
-        <Link to='/'></Link>
-          <h1>Cart</h1>
+
+      <button className="login btn">
+          <Link to="/LoginRegister">Login</Link>
+        </button>
+        <button className="reg btn">
+          <Link to="/LoginRegister">Register</Link>
+        </button>
+        <FaShoppingCart className="cart" />
       </div>
-      <div>
-        <Link to='/cart'>Cart </Link> */}
-  {/* Cart {''}
-        {countCartItems ? (
-          <button className='badge'>{countCartItems}</button>  
-        ) : (
-          '') 
-      } */}
-
-  {/* <Link to='/signin'>Sign In </Link>
-      </div> */}
-  {/* </header>
-
-    </div> */};
+  )
 }
