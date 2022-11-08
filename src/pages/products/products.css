@@ -11,7 +11,13 @@ img {
 }
 
 .product-div{
-  border: 10px solid black;
+  border: 5px solid black;
   margin: 10px;
   padding: 10px;
+}
+
+.product-cart{
+  color:black;
+  justify-content: center;
+  align-items: center;
 }
