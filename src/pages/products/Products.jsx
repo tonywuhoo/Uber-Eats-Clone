@@ -41,14 +41,6 @@ export default function Products() {
       {
       currentProducts.map((product) => {
         return (
-          // <div key={product._id} className="product-div">
-          //     <Link to={`/Products/${product._id}`}>
-          //       <h2>{product.name}</h2>
-          //       <img src={product.img} alt={product.name} />
-          //       <h3>{product.price}</h3>
-          //     </Link>
-          //     <button className="product-cart" onClick={() => addToCart(product)}>Add to Cart</button>
-          //   </div>
       <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={product.img} />
       <Card.Body>
