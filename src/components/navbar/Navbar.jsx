@@ -1,41 +1,60 @@
-import { useState } from "react";
-import { FaShoppingCart } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import Menu from "../Menu.jsx";
-import "./navbar.css";
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import CartIcon from "./cartIcon.jsx"
+import "./navbar.css"
 
-export default function Navbar() {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const handleToggle = () => {
-    setIsExpanded((prev) => !prev);
-  };
-
-  if (isExpanded) {
-    return <Menu handleToggle={handleToggle} />;
-  } else {
-    return (
-      <div className="navbar">
-        <div className="hamburger" onClick={handleToggle}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </div>
-        <div className="logo">
-          <Link className="links" to="/">
-            Fübar Eats
-          </Link>
-        </div>
-        <button className="login btn">
-          <Link to="/LoginRegister">Login</Link>
-        </button>
-        <button className="reg btn">
-          <Link to="/LoginRegister">Register</Link>
-        </button>
-        <Link className="links" to="/Cart">
-          <FaShoppingCart className="cart" />
-        </Link>
-      </div>
-    );
-  }
+function NavScrollExample() {
+  return (
+    <Navbar bg="dark" variant="dark" expand="lg">
+      <Container fluid>
+        <Navbar.Brand href="/"><h2>Fuber Eats</h2></Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: '100vh' }}
+            navbarScroll
+          >
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/About">
+              About
+            </Nav.Link>
+            <Nav.Link href="/products">Products</Nav.Link>
+            <NavDropdown title="Product Categories" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="/bbq">BBQ</NavDropdown.Item>
+              <NavDropdown.Item href="/Drinks">
+                Drinks
+              </NavDropdown.Item>
+              {/* <NavDropdown.Divider /> */}
+              <NavDropdown.Item href="/Sandwiches">
+                Sandwiches
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-success ml-2">Search</Button>
+            <Nav.Link href="/LoginRegister" className="ml-5 linkss">
+              Login
+            </Nav.Link>
+            <Nav.Link href="/LoginRegister" className='linkss'>
+              Register
+            </Nav.Link>
+            <CartIcon className="cart-icon"/>
+          </Form>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 }
+
+export default NavScrollExample;

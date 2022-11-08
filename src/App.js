@@ -9,15 +9,10 @@ import Products from "./pages/products/Products";
 import Cart from "./pages/cart/Cart";
 import { getProducts } from "./services/products";
 import { useEffect, useState } from "react";
-import ProductDetail from './pages/productdetail/ProductDetail'
+import ProductDetail from "./pages/productdetail/ProductDetail";
 
 function App() {
   const [products, setProducts] = useState(null);
-  const [Encrypted, setEncrypted] = useState("");
-  const [address, setAddress] = useState("");
-  const [userHash, setuserHash] = useState("");
-  const [Username, setUsername] = useState("Not logged in")
-  const [LoginStatus, setLoginStatus] = useState(false);
 
   async function fetchProductsData() {
     setProducts(await getProducts());
@@ -37,26 +32,13 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home
-          address={address}
-          setAddress={setAddress}
-        />} />
+        <Route path="/" element={<Home />} />
         <Route path="/delivery" element={<Delivery />} />
         <Route path="/About" element={<About />} />
         <Route path="/Products" element={<Products />} />
         <Route path="/Cart" element={<Cart />} />
-        <Route path="/LoginRegister" element={<LoginRegister
-          Encrypted={Encrypted}
-          setEncrypted={setEncrypted}
-          userHash={userHash}
-          setuserHash={setuserHash}
-          Username={Username}
-          setUsername={setUsername}
-          LoginStatus={LoginStatus}
-          setLoginStatus={setLoginStatus}
-
-        />} />
-        <Route path='/Products/:id' element={<ProductDetail />} />
+        <Route path="/LoginRegister" element={<LoginRegister />} />
+        <Route path="/Products/:id" element={<ProductDetail />} />
       </Routes>
     </div>
   );
