@@ -23,7 +23,7 @@ export default function ProductNav() {
           <Link to="/Products">BBQ</Link>
       </button>
       <button className="pizzas">
-          <Link to="/LoginRegister">Pizzas</Link>
+          <Link to="/Products">Pizzas</Link>
       </button>
       <button className="sandwiches">
           <Link to="/LoginRegister">Register</Link>
