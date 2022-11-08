@@ -10,6 +10,7 @@ import Cart from "./pages/cart/Cart";
 import { getProducts } from "./services/products";
 import { useEffect, useState } from "react";
 import ProductDetail from "./pages/productdetail/ProductDetail";
+import Cookies from 'js-cookie'
 
 function App() {
   const [products, setProducts] = useState(null);
@@ -37,6 +38,8 @@ function App() {
   }
 
   useEffect(() => {
+    console.log(userID)
+    Cookies.set("Username", Username)
     fetch("https://fubereats-backend-production.up.railway.app/users")
       .then(response => {
         return response.json()
@@ -44,7 +47,10 @@ function App() {
       .then(data => {
         data.map((element) => {
           if (element.hash === userHash) {
+            console.log(userID)
             setuserID(element._id)
+            Cookies.set("UserID", userID)
+            Cookies.set("Status", LoginStatus)
           }
         })
       })
@@ -87,18 +93,18 @@ function App() {
         userCart={userCart} />} />
         <Route path="/Cart" element={<Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
         <Route path="/LoginRegister" element={<LoginRegister
-                  Encrypted={Encrypted}
-                  setEncrypted={setEncrypted}
-                  userHash={userHash}
-                  setuserHash={setuserHash}
-                  Username={Username}
-                  setUsername={setUsername}
-                  LoginStatus={LoginStatus}
-                  setLoginStatus={setLoginStatus}
-                  userCart={userCart}
-                  setUserCart={setUserCart}
-                  userID={userID}
-                  setuserID={setuserID}/>} />
+          Encrypted={Encrypted}
+          setEncrypted={setEncrypted}
+          userHash={userHash}
+          setuserHash={setuserHash}
+          Username={Username}
+          setUsername={setUsername}
+          LoginStatus={LoginStatus}
+          setLoginStatus={setLoginStatus}
+          userCart={userCart}
+          setUserCart={setUserCart}
+          userID={userID}
+          setuserID={setuserID}/>} />
         <Route path="/Products/:id" element={<ProductDetail
           LoginStatus = {LoginStatus}
           setUserCart={setUserCart}

@@ -17,7 +17,6 @@ function ProductDetail(props) {
   
     fetchProduct()
   }, [id])
-
   function addToCart(product){
     console.log(id);
     props.setUserCart([...props.userCart,id])
