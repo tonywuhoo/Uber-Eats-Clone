@@ -9,7 +9,7 @@ import "./navbar.css"
 
 function NavScrollExample() {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="dark" variant="dark" expand="lg">
       <Container fluid>
         <Navbar.Brand href="/"><h2>Fuber Eats</h2></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -42,11 +42,11 @@ function NavScrollExample() {
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-success">Search</Button>
-            <Nav.Link href="/LoginRegister" className="ml-5">
+            <Button variant="outline-success ml-2">Search</Button>
+            <Nav.Link href="/LoginRegister" className="ml-5 linkss">
               Login
             </Nav.Link>
-            <Nav.Link href="/LoginRegister">
+            <Nav.Link href="/LoginRegister" className='linkss'>
               Register
             </Nav.Link>
             <CartIcon className="cart-icon"/>
