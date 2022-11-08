@@ -6,6 +6,7 @@
 
 img {
   max-width: 100%;
+  border-radius: 5px;
 }
 
 .products{
@@ -19,4 +20,31 @@ img {
 
 .card-text, .card-title {
   color: black;
+}
+
+.product-navbar {
+  padding: 5px;
+ 
+}
+.bbq {
+ height:50px;
+ 
+ border-radius: 5px;
+}
+.pizzas {
+  height:50px;
+ border-radius: 5px;
+}
+.sandwiches {
+  height:50px;
+ border-radius: 5px;
+}
+
+.desserts {
+  height:50px;
+ border-radius: 5px;
+}
+.drinks {
+  height:50px;
+ border-radius: 5px;
 }
