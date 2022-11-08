@@ -3,6 +3,7 @@
 import React from 'react'
 import Products from './Products';
 import './Pagination.css'
+import Button from 'react-bootstrap/Button';
 
 function Pagination({totalProducts, productsPerPage, setCurrentPage}) {
   let pages = [];
@@ -14,7 +15,7 @@ function Pagination({totalProducts, productsPerPage, setCurrentPage}) {
     <div className="pages">
       {
         pages.map((page, index) => {
-          return <button key={index} onClick={() => setCurrentPage(page)} className="page-button">{page}</button>
+          return <button variant="primary" key={index} onClick={() => setCurrentPage(page)} className="page-button">{page}</button>
         })
       }
     </div>
