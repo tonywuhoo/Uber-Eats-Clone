@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import Pagination from './Pagination'
 import { getProducts } from "../../services/products"
 import { Link } from "react-router-dom";
+import ProductNav from '../../components/ProductNav'
+import { getBBQ } from '../../services/products'
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -36,6 +38,7 @@ export default function Products() {
 
   return (
     <div>
+      <ProductNav/>
     <div className='products'>
       {
       currentProducts.map((product) => {
@@ -48,6 +51,7 @@ export default function Products() {
               </Link>
               <button className="product-cart" onClick={() => addToCart(product)}>Add to Cart</button>
             </div>
+          
         )
       })
     }

@@ -1,14 +1,12 @@
-.navbar {
-  background-color: rgb(216, 221, 220);
-  display: flex;
-  padding: 20px;
-  align-items: center;
-  align-content:space-between;
-}
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+
 .logo {
   font-size: xx-large;
   font-weight: bolder;
   margin-left: 25px;
+  margin-bottom: 25px;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .navbar a {
@@ -16,7 +14,7 @@
 }
 
 .logo a {
-  color: rgb(6, 8, 8)
+  color: rgb(225, 233, 233)
 }
 
 .btn {
@@ -31,7 +29,7 @@
 }
 
 .btn:hover {
-  background-color: rgb(6, 8, 8);
+  background-color: rgb(216, 164, 61);
   cursor: pointer;
 }
 
@@ -40,18 +38,19 @@
 }
 
 
-
 header {
   height: 35px;
   justify-content: space-between;
   text-align: center;
   display: flex;
-  padding: 15px;
+  
 }
 
 .cart {
   font-size:x-large;
   margin-left: 25px;
+  margin-bottom: 25px;
+  color: rgb(225, 233, 233)
 }
 
 .login {
@@ -67,9 +66,7 @@ header {
   width: 25px;
   height: 3px;
   margin: 5px auto;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  background-color: rgb(6, 8, 8);
+  background-color: rgb(215, 225, 225);
 }
 
 
@@ -80,18 +77,23 @@ header {
   bottom: 0;
   display: flex;
   flex-direction: column;
-  background-color: #b4b3b3;
+  background-color: rgb(180, 180, 180);
   width: 25%;
-  height: 100%;
+  height: 25%;
+  margin: 10px;
+  border-radius: 15px;
   text-align: center;
-  transition: 0.3s;
-  z-index: 2;
+  transform: translateX(-100);
+  transition: .3s;
+  z-index: 200;
 }
 .links {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin-top: 20px;
+  margin-top: 30px;
+  text-align: center;
+  font-family: 'Varela Round', sans-serif;
 }
 
 p {
@@ -104,10 +106,11 @@ p {
 }
 
 button {
-  background-color: #020202;
+  background-color: rgb(216, 221, 220);
   color: azure;
-  border-radius: 5px;
+  border-radius: 25px;
   width: 100px;
   height: 50px;
   margin-left: 5px;
+  font-family: 'Varela Round', sans-serif;
 }

@@ -24,8 +24,8 @@ export default function Home(props) {
             name="Address"
             placeholder="Enter address here"
           />
-          <button onClick={submitAddress}>
-            <Link to="/Product">Delivery</Link>
+          <button className="food" onClick={submitAddress}>
+            <Link to="/Products">Find Food</Link>
           </button>
         </div>
       </div>

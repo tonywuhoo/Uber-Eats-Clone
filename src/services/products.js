@@ -12,9 +12,18 @@ export const getProducts = async () => {
   }
 };
 
+<<<<<<< HEAD
 export const getProduct = async (id) => {
   try {
     const response = await axios.get(`https://fubereats-backend-production.up.railway.app/products/${id}`);
+=======
+export const getBBQ = async () => {
+  try {
+    const response = await axios.get(
+      "https://ig-food-menus.herokuapp.com/bbqs"
+    );
+    // console.log(response.data);
+>>>>>>> 5aee331cc136c927c3ac548e44a6ffff48f6c3ff
     return response.data;
   } catch (error) {
     throw error;
