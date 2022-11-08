@@ -18,7 +18,7 @@ export default function ProductNav() {
   console.log(products)
 
   return (
-    <div className="navbar">
+    <div className="product-navbar">
       <button className="bbq" >
           <Link to="/Products">BBQ</Link>
       </button>

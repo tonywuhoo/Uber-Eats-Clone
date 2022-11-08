@@ -37,7 +37,7 @@ export default function Products() {
  }
 
   return (
-    <div>
+    <div className='product-ctr'>
       <ProductNav/>
     <div className='products'>
       {
