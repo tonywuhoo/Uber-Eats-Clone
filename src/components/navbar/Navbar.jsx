@@ -24,7 +24,7 @@ function NavScrollExample() {
               About
             </Nav.Link>
             <Nav.Link href="/products">Products</Nav.Link>
-            <NavDropdown title="Product Categories" id="navbarScrollingDropdown">
+            <NavDropdown title="Categories" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/bbq">BBQ</NavDropdown.Item>
               <NavDropdown.Item href="/Drinks">
                 Drinks
