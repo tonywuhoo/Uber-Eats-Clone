@@ -6,6 +6,7 @@
   font-weight: bolder;
   margin-left: 25px;
   margin-bottom: 25px;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .navbar a {
@@ -82,10 +83,9 @@ header {
   margin: 10px;
   border-radius: 15px;
   text-align: center;
-  transition-property: width;
-  transition-timing-function: ease-out;
-  transition-duration: 1.3s;
-  z-index: 10;
+  transform: translateX(-100);
+  transition: .3s;
+  z-index: 200;
 }
 .links {
   display: flex;
@@ -93,6 +93,7 @@ header {
   gap: 15px;
   margin-top: 30px;
   text-align: center;
+  font-family: 'Varela Round', sans-serif;
 }
 
 p {
@@ -111,4 +112,5 @@ button {
   width: 100px;
   height: 50px;
   margin-left: 5px;
+  font-family: 'Varela Round', sans-serif;
 }

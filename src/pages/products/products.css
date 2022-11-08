@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 img {
   max-width: 100%;
 }
@@ -8,6 +10,7 @@ img {
   grid-gap: 3em;
   padding: 10px;
   margin: 10px;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .product-div{
