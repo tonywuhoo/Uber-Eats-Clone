@@ -8,8 +8,9 @@ import ProductNav from '../../components/ProductNav'
 import { getBBQ } from '../../services/products'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-
-export default function Products() {
+import Cookies from 'js-cookie'
+import { addtoCart } from '../../services/addtoCart'
+export default function Products(props) {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerpage] = useState(20);
@@ -28,10 +29,16 @@ export default function Products() {
 
  const lastProductIndex = currentPage * productsPerPage;
  const firstProductIndex = lastProductIndex - productsPerPage;
- const currentProducts = products.slice(firstProductIndex, lastProductIndex);
+  const currentProducts = products.slice(firstProductIndex, lastProductIndex);
 
- function addToCart(product){
-  console.log(product._id);
+  
+  function addToCart(product) {
+    if (Cookies.get("Status" === "false")) {
+      alert("You must be logged in to add to cart!")
+    } else {
+      addtoCart(product._id)
+      // props.setUserCart([...props.userCart,product._id])
+    }
  }
 
   return (
@@ -53,7 +60,7 @@ export default function Products() {
           ${product.price}
          </Card.Text> 
          </Link>
-        <Button variant="primary" onClick={() => addToCart(product)}>Add to Cart</Button>
+              <Button id={ product._id} variant="primary" onClick={() => addToCart(product)}>Add to Cart</Button>
       </Card.Body>
     </Card>
           

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import sha256 from 'js-sha256'
 import axios from 'axios';
 import "./loginregister.css"
+import Cookies from 'js-cookie'
 // import { getUserByHash } from "../../services/userinfo";
 
 export default function LoginRegister(props) {
@@ -12,14 +13,17 @@ export default function LoginRegister(props) {
   const [LoginPassword, setLoginPassword] = useState("");
   const [LoginConfirmPassword, setLoginConfirmPassword] = useState("")
 
-  async function doShit() {
+  function doShit() {
     console.log("Clicked")
+    console.log(Cookies.get("UserID"))
     // getUserByHash(props.userHash);
-    axios.put("https://fubereats-backend-production.up.railway.app/users/" + props.userID, {
-      hash: props.userHash,
-      cartItemsByID: ["Test", "Test"]
-    })
+    // axios.put("https://fubereats-backend-production.up.railway.app/users/" + Cookies.get("UserID"), {
+    //   hash: props.userHash,
+    //   cartItemsByID: ["Test", "Test"]
+    // })
+    console.log(Cookies.get())
   }
+
   const ResetParameters = async () => {
     document.getElementById("username-register").value = "";
     document.getElementById("password-register").value = "";
@@ -62,7 +66,7 @@ export default function LoginRegister(props) {
   const doRegister = async (event) => {
     await event.preventDefault();
     console.log("Registering...");
-    if (props.LoginStatus === true) {
+    if (Cookies.get("Status") === "true") {
       alert("You are logged in, log out to make an account!");
       ResetParameters();
     } else {
@@ -105,7 +109,7 @@ export default function LoginRegister(props) {
   const doLogin = (event) => {
     event.preventDefault();
     console.log("Logging in....");
-    if (props.LoginStatus === true) {
+    if (Cookies.get("Status") === "true") {
       alert("You are logged in already!");
       ResetParameters();
       return
@@ -129,23 +133,26 @@ export default function LoginRegister(props) {
               props.setLoginStatus(true);
             }
           })
+          alert("Logged in!")
         })
-      alert("Logged in!")
+
       ResetParameters();
     }
   };
 
   const doLogOut = (event) => {
-    if (props.LoginStatus === false) {
+    if (Cookies.get("Status") === "false") {
       props.setUsername("Not logged in")
       alert("Already logged out");
     }
-    if (props.LoginStatus === true) {
+    if (Cookies.get("Status") === "true") {
       props.setLoginStatus(false);
       props.setEncrypted("");
       props.setuserHash("");
       props.setuserID("")
-      props.setUsername("Not logged in")
+      Cookies.set("UserID", "Not logged in")
+      Cookies.set("Status", false)
+      Cookies.set("Username", "Not logged in")
       alert("Logged out sucessfully");
     }
   };
@@ -153,7 +160,7 @@ export default function LoginRegister(props) {
   return (
     <div className='LoginRegister'>
       <h>
-        Welcome : {props.Username}
+        Welcome : {Cookies.get("Username")}
       </h>
       <form onSubmit={doRegister}>
         Register Account :
