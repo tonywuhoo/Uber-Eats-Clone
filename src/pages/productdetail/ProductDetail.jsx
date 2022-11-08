@@ -23,6 +23,10 @@ function ProductDetail() {
    }
 
   return (
+    <div>
+    <Link to={`/Products/`}>
+      <div className="back">Back to Products</div>
+    </Link>
     <div className="product-detail">
       <img className="product-detail-img" src={product.img} alt={product.name} />
       <div className="detail">
@@ -31,7 +35,8 @@ function ProductDetail() {
           <div className="price"><h3>{product.price}</h3></div>
           <div className="cart"><button>Add to Cart</button></div>
       </div>
-    </div>
+      </div>
+      </div>
   )
 }
 

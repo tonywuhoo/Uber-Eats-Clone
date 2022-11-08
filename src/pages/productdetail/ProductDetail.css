@@ -4,6 +4,17 @@
 }
 
 .product-detail {
-  padding-top: 85px;
-  padding-left: 15px;
+  display: flex;
+  border: 1px solid black;
+  margin: 50px;
+  padding: 50px;
+}
+
+.detail{
+  padding: 10px;
+}
+
+.back{
+  margin-top: 100px;
+  margin-left: 50px;
 }
