@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
+.product-ctr {
+  padding-top: 70px;
+}
+
 img {
   max-width: 100%;
 }

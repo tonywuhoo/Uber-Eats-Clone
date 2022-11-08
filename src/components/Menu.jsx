@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import "../components/navbar/navbar.css";
 
-
-export default function Menu({ handleToggle }) {\
+export default function Menu({ handleToggle }) {
   return (
     <div className="navbar">
       <div className="menu" onClick={handleToggle}>
