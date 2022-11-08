@@ -12,17 +12,19 @@ import { useEffect, useState } from "react";
 import ProductDetail from "./pages/productdetail/ProductDetail";
 
 function App() {
+  const items = { items }
   const [products, setProducts] = useState(null);
+  // const [deleteItems ] = deleteItems
   const [cartItems, setCartItems] = useState([{
-      _id: "6367e5cdf31be39cd94b0fcb",
-      img: "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/79619/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
-      name: "Joe's KC BBQ",
-      dsc: "Joe's KC Ribs, Brisket & Burnt Ends",
-      price: 110.99,
-      rate: 5,
-      country: "Kansas City, KS"
-    }]);
-  // const [onAdd, setOnAdd] = useState();
+    _id: "6367e5cdf31be39cd94b0fcb",
+    img: "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/79619/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
+    name: "Joe's KC BBQ",
+    dsc: "Joe's KC Ribs, Brisket & Burnt Ends",
+    price: 110.99,
+    rate: 5,
+    country: "Kansas City, KS"
+  }]);
+  const [onAdd, onRemove] = useState();
 
   async function fetchProductsData() {
     setProducts(await getProducts());
@@ -30,41 +32,62 @@ function App() {
   }
 
   useEffect(() => {
+    setCartItems([]);
     fetchProductsData();
   }, []);
 
-  const onAdd = (item) => {
-    // Need additional API call to update user cart
-    console.log("Item added", item)
+  // }, []);
+
+//   const onAdd = (Products) => {
+//     fetchProductsData()
+//   }, [Products];  return response.data;
+//   finally {
+//     // Need additional API call to update user cart
+//     console.log("Item added", Products)
+// }
+
+
+const removeItems = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleted = await Products.findByIdAndDelete(id)
+
+    if (deleted) {
+      return res.status(200).send("Item deleted!");
+    }
+    throw new Error("Item not found");
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
   }
-
-  const onRemove = (item) => {
-    // Need additional API call to update user cart
-    console.log("Item removed", item)
-  }
-
-  if (!products) {
-    console.log("loading...");
-  } else {
-    console.log("complete: ", products);
-  }
-
-
-
-  return (
-    <div className="App">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/delivery" element={<Delivery />} />
-        <Route path="/About" element={<About />} />
-        <Route path="/Products" element={<Products />} />
-        <Route path="/Cart" element={<Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
-        <Route path="/LoginRegister" element={<LoginRegister />} />
-        <Route path="/Products/:id" element={<ProductDetail />} />
-      </Routes>
-    </div>
-  );
 }
+  
+  
+ 
+
+    if (!Products) {
+      console.log("loading...");
+    } else {
+      console.log("complete: ", products);
+    }
+
+
+
+    return (
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/delivery" element={<Delivery />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Products" element={<Products />} />
+          <Route path="/Cart" element={<Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
+          <Route path="/LoginRegister" element={<LoginRegister />} />
+          <Route path="/Products/:id" element={<ProductDetail />} />
+        </Routes>
+      </div>
+    );
+  }
+
 
 export default App;

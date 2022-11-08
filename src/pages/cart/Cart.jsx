@@ -15,7 +15,7 @@ export default function Cart(props) {
         <div className='Cart'>Cart</div>
       <h2>Cart Items</h2>
       <div>
-        {/* when cart is empty, cart reads its empty */}
+        {/* when cart is empty, cart reads empty */}
         {cartItems.length === 0 && <div> Cart Is Empty</div> } </div>
         {cartItems.map((item) => (
           <div key={item.id} className='row'>
@@ -23,8 +23,8 @@ export default function Cart(props) {
             </div>
             <div className="col-2">
               {/* buttons to add more of the same product in the cart */}
-            <button onClick={() => onAdd(item)} className="add cart-btn"> + </button>
-            <button onClick={()=> onRemove(item)} className="remove cart-btn"> - </button>
+            <button onClick={() => onAdd(item)} className="add"> + </button>
+            <button onClick={()=> onRemove(item)} className="remove"> - </button>
           </div>
           <div className="col-2 text-right">
               {item.qty} x ${item.price.toFixed(2)}
@@ -52,7 +52,7 @@ export default function Cart(props) {
           <hr />
           <div className="row">
             {/* button to checkout whats in the cart */}
-            <button className="cart-btn" onClick={() => alert('Implement Checkout')}>
+            <button onClick={() => alert('Checkout Page')}>
               Checkout
           </button>
 
