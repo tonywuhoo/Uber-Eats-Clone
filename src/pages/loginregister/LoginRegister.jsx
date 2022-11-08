@@ -1,28 +1,18 @@
-import { React, useState} from 'react'
+import { useEffect, useState } from "react";
 import sha256 from 'js-sha256'
 import axios from 'axios';
 import "./loginregister.css"
 
-export default function LoginRegister() {
-  const [address, setAddress] = useState("");
-  const [LoginStatus, setLoginStatus] = useState(false);
+export default function LoginRegister(props) {
   const [RegisterUser, setRegisterUser] = useState("");
   const [RegisterPassword, setRegisterPassword] = useState("");
   const [RegisterConfirmPassword, setRegisterConfirmPassword] = useState("");
   const [LoginUser, setLoginUser] = useState("");
   const [LoginPassword, setLoginPassword] = useState("");
-  const [LoginConfirmPassword, setLoginConfirmPassword] = useState("");
-  const [Encrypted, setEncrypted] = useState("");
-  const [userHash, setuserHash] = useState("");
+  const [LoginConfirmPassword, setLoginConfirmPassword] = useState("")
 
-let config = {
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  };
-  const Check = (event) => {
-    console.log(Encrypted);
-  };
+
+
   const ResetParameters = async () => {
     document.getElementById("username-register").value = "";
     document.getElementById("password-register").value = "";
@@ -47,6 +37,7 @@ let config = {
     if (event.target.id === "confirmpassword-register") {
       setRegisterConfirmPassword(event.target.value);
     }
+    props.setEncrypted(sha256(RegisterUser + RegisterPassword))
   };
   const HandleLogin = (event) => {
     if (event.target.id === "username-login") {
@@ -58,37 +49,47 @@ let config = {
     if (event.target.id === "confirmpassword-login") {
       setLoginConfirmPassword(event.target.value);
     }
+    props.setEncrypted(sha256(LoginUser + LoginPassword))
   };
 
   const doRegister = async (event) => {
     await event.preventDefault();
     console.log("Registering...");
-    if (LoginStatus === true) {
+    if (props.LoginStatus === true) {
       alert("You are logged in, log out to make an account!");
     } else {
       if (
         RegisterPassword === RegisterConfirmPassword &&
         RegisterUser.length > 0
       ) {
-        axios
-          .get("http://localhost:3003/users")
-          .then((response) => {
-            console.log(response.data);
-            setEncrypted(sha256(RegisterUser + RegisterPassword));
-            return response.data;
-          })
+        fetch("https://fubereats-backend-production.up.railway.app/users")
+        .then((response) => {
+        return response.json();
+        })
           .then((data) => {
-            axios
-              .post("http://localhost:3003/users", { hash: "Testing" })
-              .then((response) => {
-                console.log(response.data);
-              });
-            setLoginStatus(true);
-            ResetParameters();
+        let userHashes = []
+        data.map((element) => {
+        userHashes.push(element.hash)
+        })
+        if (userHashes.includes(props.Encrypted)) {
+          alert("This account has already been created")
+          ResetParameters();
+        } else {
+          axios
+            .post("https://fubereats-backend-production.up.railway.app/users", { hash: props.Encrypted })
+            .then((response) => {
+            console.log(response.data);
+            props.setLoginStatus(true);
+            props.setuserHash(props.Encrypted)
+              ResetParameters();
+              props.setUsername(RegisterUser)
             alert("Registered and Logged in ...");
-          });
+        });
+        }  
+        })
       } else {
         alert("Passwords do not match, or username field is empty");
+        ResetParameters();
       }
     }
   };
@@ -96,38 +97,55 @@ let config = {
   const doLogin = (event) => {
     event.preventDefault();
     console.log("Logging in....");
-    if (LoginStatus === true) {
+    if (props.LoginStatus === true) {
       alert("You are logged in already!");
+      ResetParameters();
+      return
     }
     if (LoginConfirmPassword !== LoginPassword || LoginUser.length < 1) {
       alert("Passwords do not match or Username is blank!");
     } else {
-      const LoginHashing = async (event) => {
-        setEncrypted(await sha256(RegisterUser + RegisterPassword));
-      };
-      LoginHashing();
-      // Once prelimintary parameters met, we take Encrypted hash, fetch userdata base, and see if theres a match.
-      // If there is a match, setuserHash(hash)
-      // If there is no match, alert("No such account exist, go create an account")
-      // Then set login status === true
-      alert("Login feature currently down...");
+      fetch("https://fubereats-backend-production.up.railway.app/users")
+      .then((response) => {
+      return response.json();
+      })
+      .then((data) => {
+      let userHashes = []
+      data.map((element) => {
+      userHashes.push(element.hash)
+      })
+      userHashes.map((element) => {
+        if (element === props.Encrypted) {
+          props.setuserHash(props.Encrypted)
+          props.setUsername(LoginUser)
+          props.setLoginStatus(true);
+      }  
+      })
+      })
+      alert("Logged in!")
       ResetParameters();
     }
   };
-  const Login = (event) => {};
+  
   const doLogOut = (event) => {
-    if (LoginStatus === false) {
+    if (props.LoginStatus === false) {
+      props.setUsername("Not logged in")
       alert("Already logged out");
     }
-    if (LoginStatus === true) {
-      setLoginStatus(false);
-      setEncrypted("");
+    if (props.LoginStatus === true) {
+      props.setLoginStatus(false);
+      props.setEncrypted("");
+      props.setuserHash("");
+      props.setUsername("Not logged in")
       alert("Logged out sucessfully");
     }
   };
 
   return (
     <div className='LoginRegister'>
+      <h>
+        Welcome : {props.Username}
+      </h>
       <form onSubmit={ doRegister }>
           Register Account :
         <br></br>
@@ -160,9 +178,6 @@ let config = {
       <br></br>
       <button onClick={doLogOut}>
         Log Out
-      </button>
-      <button onClick={Check}>
-        Check
       </button>
     </div>
   )

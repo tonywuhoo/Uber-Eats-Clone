@@ -11,6 +11,7 @@ export default function Menu({handleToggle}) {
     <div className="navbar">
       <div className="menu" onClick={handleToggle}>
         <div className='links'>
+
         <Link to="/">Home</Link>
       <Link to="/login">Login</Link>
       <Link to="/LoginRegister">Register</Link>
