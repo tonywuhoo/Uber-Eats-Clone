@@ -18,7 +18,7 @@ export default function cardGroup() {
             <p class="card-text">Interested in adding your resturant to our app?</p>
           </div>
           <div class="card-footer">
-            <small class="text-muted"><Link to="/">Register Now</Link></small>
+            <small class="text-muted"><Link to="/">Create Buisness Account</Link></small>
           </div>
         </div>
         <div class="card">
@@ -28,11 +28,11 @@ export default function cardGroup() {
             alt="Card image cap"
           />
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text</p>
+            <h5 class="card-title">Start getting your food delivered.</h5>
+            <p class="card-text">create an account, lay back, and let the food come to you.</p>
           </div>
           <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
+            <small class="text-muted"><Link to="/">Create Account</Link></small>
           </div>
         </div>
         <div class="card">
@@ -42,11 +42,11 @@ export default function cardGroup() {
             alt="Card image cap"
           />
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with</p>
+          <h5 class="card-title">Deliver with fubar</h5>
+            <p class="card-text">sign up to deliver with us.</p>
           </div>
           <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
+          <small class="text-muted"><Link to="/">Join Fubar</Link></small>
           </div>
         </div>
       </div>
