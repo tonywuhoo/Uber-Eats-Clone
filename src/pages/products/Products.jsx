@@ -8,7 +8,8 @@ import ProductNav from '../../components/ProductNav'
 import { getBBQ } from '../../services/products'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-
+import Cookies from 'js-cookie'
+import { addtoCart } from '../../services/addtoCart'
 export default function Products(props) {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -32,8 +33,12 @@ export default function Products(props) {
 
   
   function addToCart(product) {
-    console.log("Adding product to cart: ", product._id);
-    props.setUserCart([...props.userCart,product._id])
+    if (Cookies.get("Status" === "false")) {
+      alert("You must be logged in to add to cart!")
+    } else {
+      addtoCart(product._id)
+      // props.setUserCart([...props.userCart,product._id])
+    }
  }
 
   return (
@@ -55,7 +60,7 @@ export default function Products(props) {
           ${product.price}
          </Card.Text> 
          </Link>
-        <Button variant="primary" onClick={() => addToCart(product)}>Add to Cart</Button>
+              <Button id={ product._id} variant="primary" onClick={() => addToCart(product)}>Add to Cart</Button>
       </Card.Body>
     </Card>
           

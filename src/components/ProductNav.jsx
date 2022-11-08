@@ -15,7 +15,6 @@ export default function ProductNav() {
     fetchProductsData();
   }, []);
 
-  console.log(products)
 
   return (
     <div className="product-navbar">

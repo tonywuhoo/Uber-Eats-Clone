@@ -21,6 +21,7 @@ export default function LoginRegister(props) {
     //   hash: props.userHash,
     //   cartItemsByID: ["Test", "Test"]
     // })
+    console.log(Cookies.get())
   }
 
   const ResetParameters = async () => {
