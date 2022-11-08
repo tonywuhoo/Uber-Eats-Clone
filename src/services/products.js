@@ -13,10 +13,25 @@ export const getProducts = async () => {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export const getProduct = async (id) => {
   try {
     const response = await axios.get(`https://fubereats-backend-production.up.railway.app/products/${id}`);
 =======
+=======
+export const getProduct = async (id) => {
+  try {
+    const response = await axios.get(
+      `https://fubereats-backend-production.up.railway.app/products/${id}`
+    );
+    // console.log(response.data);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+>>>>>>> a4b8cdada482298a88deaf2c02e48ded800cc2c1
 export const getBBQ = async () => {
   try {
     const response = await axios.get(

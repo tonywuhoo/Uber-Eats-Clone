@@ -1,0 +1,13 @@
+.home-sect2 {
+  padding: 30px;
+}
+
+.card {
+  padding: 12px;  
+}
+
+.home-sect2 > h2{
+  text-align: center;
+  padding: 20px;
+  padding-top: 100px;
+}

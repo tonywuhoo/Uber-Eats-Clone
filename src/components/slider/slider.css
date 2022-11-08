@@ -1,0 +1,18 @@
+.carousel-inner {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* max-height: 70vh; */
+}
+
+.carousel-item {
+  height: 80vh;
+}
+
+.slider-img {
+  z-index: -3;
+}
+
+.cap {
+  font-size: 1.3rem;
+}
