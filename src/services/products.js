@@ -12,6 +12,18 @@ export const getProducts = async () => {
   }
 };
 
+export const getBBQ = async () => {
+  try {
+    const response = await axios.get(
+      "https://ig-food-menus.herokuapp.com/bbqs"
+    );
+    // console.log(response.data);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 // export const getLimitedProducts = async () => {
 //   try {
 //     const response = await axios.get(
