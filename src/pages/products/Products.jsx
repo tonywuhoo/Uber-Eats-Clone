@@ -1,5 +1,5 @@
 import React from 'react'
-import "./products.css"
+import "./Products.css"
 import { useState, useEffect } from 'react'
 import Pagination from './Pagination'
 import { getProducts } from "../../services/products"
