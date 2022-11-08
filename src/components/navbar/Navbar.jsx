@@ -20,8 +20,11 @@ function NavScrollExample() {
             navbarScroll
           >
             <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/About">
+              About
+            </Nav.Link>
             <Nav.Link href="/products">Products</Nav.Link>
-            <NavDropdown title="Categories" id="navbarScrollingDropdown">
+            <NavDropdown title="Product Categories" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/bbq">BBQ</NavDropdown.Item>
               <NavDropdown.Item href="/Drinks">
                 Drinks
@@ -31,9 +34,6 @@ function NavScrollExample() {
                 Sandwiches
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="/About">
-              About
-            </Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control
@@ -43,6 +43,12 @@ function NavScrollExample() {
               aria-label="Search"
             />
             <Button variant="outline-success">Search</Button>
+            <Nav.Link href="/LoginRegister" className="ml-5">
+              Login
+            </Nav.Link>
+            <Nav.Link href="/LoginRegister">
+              Register
+            </Nav.Link>
             <CartIcon className="cart-icon"/>
           </Form>
         </Navbar.Collapse>

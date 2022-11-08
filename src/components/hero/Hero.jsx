@@ -5,8 +5,8 @@ import "./hero.css"
 
 export default function hero() {
   return (
-    <div className="hero-ctr">
-      <div className="home-box">
+    <div className="hero-ctr container-fluid">
+      <div className="home-box container-fluid">
         <div className="display-4 hungry">Get food Now!</div>
         <p>Get 50% off your next order when you enter BOGOSLFGKF beatae.</p>
 
