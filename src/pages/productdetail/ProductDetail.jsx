@@ -4,7 +4,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import { getProduct } from "../../services/products";
 import "./ProductDetail.css";
 
-function ProductDetail() {
+function ProductDetail(props) {
   const [product, setProduct] = useState([])
   let { id } = useParams()
   let navigate = useNavigate()
@@ -19,7 +19,8 @@ function ProductDetail() {
   }, [id])
 
   function addToCart(product){
-    console.log(product._id);
+    console.log(id);
+    props.setUserCart([...props.userCart,id])
    }
 
   return (
@@ -29,7 +30,7 @@ function ProductDetail() {
           <div className="name"><h1>{product.name}</h1></div>
           <div className="description"><h3>{product.dsc}</h3></div>
           <div className="price"><h3>{product.price}</h3></div>
-          <div className="cart"><button>Add to Cart</button></div>
+          <div className="cart"><button onClick={addToCart}>Add to Cart</button></div>
       </div>
     </div>
   )

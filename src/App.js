@@ -19,7 +19,7 @@ function App() {
   const [userID, setuserID] = useState("No UserID")
   const [Username, setUsername] = useState("Not logged in")
   const [LoginStatus, setLoginStatus] = useState(false);
-  const [userCart, setUserCart] = useState()
+  const [userCart, setUserCart] = useState([])
   const [cartItems, setCartItems] = useState([{
       _id: "6367e5cdf31be39cd94b0fcb",
       img: "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/79619/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
@@ -30,7 +30,7 @@ function App() {
       country: "Kansas City, KS"
     }]);
   // const [onAdd, setOnAdd] = useState();
-
+  
   async function fetchProductsData() {
     setProducts(await getProducts());
     // Step 1: set up services endpoint to get items from cart, then setCartItems => need to set cart items to pass into Cart component
@@ -76,10 +76,15 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home
+          address={address}
+          setAddress={setAddress} />} />
         <Route path="/delivery" element={<Delivery />} />
         <Route path="/About" element={<About />} />
-        <Route path="/Products" element={<Products />} />
+        <Route path="/Products" element={<Products
+        LoginStatus = {LoginStatus}
+        setUserCart={setUserCart}
+        userCart={userCart} />} />
         <Route path="/Cart" element={<Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
         <Route path="/LoginRegister" element={<LoginRegister
                   Encrypted={Encrypted}
@@ -94,7 +99,10 @@ function App() {
                   setUserCart={setUserCart}
                   userID={userID}
                   setuserID={setuserID}/>} />
-        <Route path="/Products/:id" element={<ProductDetail />} />
+        <Route path="/Products/:id" element={<ProductDetail
+          LoginStatus = {LoginStatus}
+          setUserCart={setUserCart}
+          userCart={userCart}/>} />
       </Routes>
     </div>
   );

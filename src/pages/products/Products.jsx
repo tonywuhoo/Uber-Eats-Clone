@@ -9,7 +9,7 @@ import { getBBQ } from '../../services/products'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-export default function Products() {
+export default function Products(props) {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerpage] = useState(20);
@@ -28,10 +28,12 @@ export default function Products() {
 
  const lastProductIndex = currentPage * productsPerPage;
  const firstProductIndex = lastProductIndex - productsPerPage;
- const currentProducts = products.slice(firstProductIndex, lastProductIndex);
+  const currentProducts = products.slice(firstProductIndex, lastProductIndex);
 
- function addToCart(product){
-  console.log(product._id);
+  
+  function addToCart(product) {
+    console.log("Adding product to cart: ", product._id);
+    props.setUserCart([...props.userCart,product._id])
  }
 
   return (

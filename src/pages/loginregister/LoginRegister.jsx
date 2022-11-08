@@ -129,8 +129,9 @@ export default function LoginRegister(props) {
               props.setLoginStatus(true);
             }
           })
+          alert("Logged in!")
         })
-      alert("Logged in!")
+
       ResetParameters();
     }
   };
