@@ -49,6 +49,8 @@ function App() {
     console.log("complete: ", products);
   }
 
+
+
   return (
     <div className="App">
       <Navbar />

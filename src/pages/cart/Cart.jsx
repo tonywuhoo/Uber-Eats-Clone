@@ -4,8 +4,10 @@ import "./cart.css"
 export default function Cart(props) {
   const { cartItems, onAdd, onRemove } = props;
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0)
+  //^^ destructuring items to get cart price total
   const taxPrice = itemsPrice * 0.14
   const totalPrice = itemsPrice + taxPrice 
+
     
   return (
       // aside puts the content side by side
