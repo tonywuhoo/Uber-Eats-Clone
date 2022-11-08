@@ -1,11 +1,13 @@
 import React from 'react'
-import "./products.css"
+import "./Products.css"
 import { useState, useEffect } from 'react'
 import Pagination from './Pagination'
 import { getProducts } from "../../services/products"
 import { Link } from "react-router-dom";
 import ProductNav from '../../components/ProductNav'
 import { getBBQ } from '../../services/products'
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -29,11 +31,7 @@ export default function Products() {
  const currentProducts = products.slice(firstProductIndex, lastProductIndex);
 
  function addToCart(product){
-  console.log(product);
- }
-
- function getProductDetail(){
-  console.log('Clicking')
+  console.log(product._id);
  }
 
   return (
@@ -43,14 +41,21 @@ export default function Products() {
       {
       currentProducts.map((product) => {
         return (
-          <div key={product._id} className="product-div">
-              <Link to={`/Products/${product._id}`}>
-                <h2>{product.name}</h2>
-                <img src={product.img} alt={product.name} />
-                <h3>{product.price}</h3>
-              </Link>
-              <button className="product-cart" onClick={() => addToCart(product)}>Add to Cart</button>
-            </div>
+      <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={product.img} />
+      <Card.Body>
+      <Link to={`/Products/${product._id}`}>
+        <Card.Title>{product.name}</Card.Title>
+        <Card.Text>
+          {product.dsc}
+        </Card.Text>
+        <Card.Text>
+          {product.price}
+         </Card.Text> 
+         </Link>
+        <Button variant="primary" onClick={() => addToCart(product)}>Add to Cart</Button>
+      </Card.Body>
+    </Card>
           
         )
       })

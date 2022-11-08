@@ -11,7 +11,7 @@ function Pagination({totalProducts, productsPerPage, setCurrentPage}) {
     pages.push(i)
   }
   return (
-    <div>
+    <div className="pages">
       {
         pages.map((page, index) => {
           return <button key={index} onClick={() => setCurrentPage(page)} className="page-button">{page}</button>
