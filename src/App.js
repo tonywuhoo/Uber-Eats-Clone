@@ -13,6 +13,13 @@ import ProductDetail from "./pages/productdetail/ProductDetail";
 
 function App() {
   const [products, setProducts] = useState(null);
+  const [Encrypted, setEncrypted] = useState("");
+  const [address, setAddress] = useState("");
+  const [userHash, setuserHash] = useState("");
+  const [userID, setuserID] = useState("No UserID")
+  const [Username, setUsername] = useState("Not logged in")
+  const [LoginStatus, setLoginStatus] = useState(false);
+  const [userCart, setUserCart] = useState()
   const [cartItems, setCartItems] = useState([{
       _id: "6367e5cdf31be39cd94b0fcb",
       img: "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/79619/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
@@ -30,6 +37,20 @@ function App() {
   }
 
   useEffect(() => {
+    fetch("https://fubereats-backend-production.up.railway.app/users")
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        data.map((element) => {
+          if (element.hash === userHash) {
+            setuserID(element._id)
+          }
+        })
+      })
+  })
+
+  useEffect(() => {
     fetchProductsData();
   }, []);
 
@@ -43,11 +64,11 @@ function App() {
     console.log("Item removed", item)
   }
 
-  if (!products) {
-    console.log("loading...");
-  } else {
-    console.log("complete: ", products);
-  }
+  // if (!products) {
+  //   console.log("loading...");
+  // } else {
+  //   console.log("complete: ", products);
+  // }
 
 
 
@@ -60,7 +81,19 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="/Products" element={<Products />} />
         <Route path="/Cart" element={<Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
-        <Route path="/LoginRegister" element={<LoginRegister />} />
+        <Route path="/LoginRegister" element={<LoginRegister
+                  Encrypted={Encrypted}
+                  setEncrypted={setEncrypted}
+                  userHash={userHash}
+                  setuserHash={setuserHash}
+                  Username={Username}
+                  setUsername={setUsername}
+                  LoginStatus={LoginStatus}
+                  setLoginStatus={setLoginStatus}
+                  userCart={userCart}
+                  setUserCart={setUserCart}
+                  userID={userID}
+                  setuserID={setuserID}/>} />
         <Route path="/Products/:id" element={<ProductDetail />} />
       </Routes>
     </div>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import sha256 from 'js-sha256'
 import axios from 'axios';
 import "./loginregister.css"
+// import { getUserByHash } from "../../services/userinfo";
 
 export default function LoginRegister(props) {
   const [RegisterUser, setRegisterUser] = useState("");
@@ -11,8 +12,14 @@ export default function LoginRegister(props) {
   const [LoginPassword, setLoginPassword] = useState("");
   const [LoginConfirmPassword, setLoginConfirmPassword] = useState("")
 
-
-
+  async function doShit() {
+    console.log("Clicked")
+    // getUserByHash(props.userHash);
+    axios.put("https://fubereats-backend-production.up.railway.app/users/" + props.userID, {
+      hash: props.userHash,
+      cartItemsByID: ["Test", "Test"]
+    })
+  }
   const ResetParameters = async () => {
     document.getElementById("username-register").value = "";
     document.getElementById("password-register").value = "";
@@ -57,36 +64,37 @@ export default function LoginRegister(props) {
     console.log("Registering...");
     if (props.LoginStatus === true) {
       alert("You are logged in, log out to make an account!");
+      ResetParameters();
     } else {
       if (
         RegisterPassword === RegisterConfirmPassword &&
         RegisterUser.length > 0
       ) {
         fetch("https://fubereats-backend-production.up.railway.app/users")
-        .then((response) => {
-        return response.json();
-        })
+          .then((response) => {
+            return response.json();
+          })
           .then((data) => {
-        let userHashes = []
-        data.map((element) => {
-        userHashes.push(element.hash)
-        })
-        if (userHashes.includes(props.Encrypted)) {
-          alert("This account has already been created")
-          ResetParameters();
-        } else {
-          axios
-            .post("https://fubereats-backend-production.up.railway.app/users", { hash: props.Encrypted })
-            .then((response) => {
-            console.log(response.data);
-            props.setLoginStatus(true);
-            props.setuserHash(props.Encrypted)
+            let userHashes = []
+            data.map((element) => {
+              userHashes.push(element.hash)
+            })
+            if (userHashes.includes(props.Encrypted)) {
+              alert("This account has already been created")
               ResetParameters();
-              props.setUsername(RegisterUser)
-            alert("Registered and Logged in ...");
-        });
-        }  
-        })
+            } else {
+              axios
+                .post("https://fubereats-backend-production.up.railway.app/users", { hash: props.Encrypted })
+                .then((response) => {
+                  console.log(response.data);
+                  props.setLoginStatus(true);
+                  props.setuserHash(props.Encrypted)
+                  ResetParameters();
+                  props.setUsername(RegisterUser)
+                  alert("Registered and Logged in ...");
+                });
+            }
+          })
       } else {
         alert("Passwords do not match, or username field is empty");
         ResetParameters();
@@ -106,27 +114,27 @@ export default function LoginRegister(props) {
       alert("Passwords do not match or Username is blank!");
     } else {
       fetch("https://fubereats-backend-production.up.railway.app/users")
-      .then((response) => {
-      return response.json();
-      })
-      .then((data) => {
-      let userHashes = []
-      data.map((element) => {
-      userHashes.push(element.hash)
-      })
-      userHashes.map((element) => {
-        if (element === props.Encrypted) {
-          props.setuserHash(props.Encrypted)
-          props.setUsername(LoginUser)
-          props.setLoginStatus(true);
-      }  
-      })
-      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          let userHashes = []
+          data.map((element) => {
+            userHashes.push(element.hash)
+          })
+          userHashes.map((element) => {
+            if (element === props.Encrypted) {
+              props.setuserHash(props.Encrypted)
+              props.setUsername(LoginUser)
+              props.setLoginStatus(true);
+            }
+          })
+        })
       alert("Logged in!")
       ResetParameters();
     }
   };
-  
+
   const doLogOut = (event) => {
     if (props.LoginStatus === false) {
       props.setUsername("Not logged in")
@@ -136,6 +144,7 @@ export default function LoginRegister(props) {
       props.setLoginStatus(false);
       props.setEncrypted("");
       props.setuserHash("");
+      props.setuserID("")
       props.setUsername("Not logged in")
       alert("Logged out sucessfully");
     }
@@ -146,8 +155,8 @@ export default function LoginRegister(props) {
       <h>
         Welcome : {props.Username}
       </h>
-      <form onSubmit={ doRegister }>
-          Register Account :
+      <form onSubmit={doRegister}>
+        Register Account :
         <br></br>
         <label htmlFor="doRegister">Username: </label>
         <input type="text" id="username-register" onChange={HandleRegister}></input>
@@ -161,7 +170,7 @@ export default function LoginRegister(props) {
         <input type="submit" />
       </form>
       <br></br>
-      <form onSubmit={ doLogin }>
+      <form onSubmit={doLogin}>
         Login To Account :
         <br></br>
         <label htmlFor="doLogin">Username: </label>
@@ -178,6 +187,9 @@ export default function LoginRegister(props) {
       <br></br>
       <button onClick={doLogOut}>
         Log Out
+      </button>
+      <button onClick={doShit}>
+        Click
       </button>
     </div>
   )
