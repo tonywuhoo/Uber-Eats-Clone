@@ -23,8 +23,8 @@ export default function Cart(props) {
             </div>
             <div className="col-2">
               {/* buttons to add more of the same product in the cart */}
-            <button onClick={() => onAdd(item)} className="add"> + </button>
-            <button onClick={()=> onRemove(item)} className="remove"> - </button>
+            <button onClick={() => onAdd(item)} className="add cart-btn"> + </button>
+            <button onClick={()=> onRemove(item)} className="remove cart-btn"> - </button>
           </div>
           <div className="col-2 text-right">
               {item.qty} x ${item.price.toFixed(2)}
@@ -52,7 +52,7 @@ export default function Cart(props) {
           <hr />
           <div className="row">
             {/* button to checkout whats in the cart */}
-            <button onClick={() => alert('Implement Checkout')}>
+            <button className="cart-btn" onClick={() => alert('Implement Checkout')}>
               Checkout
           </button>
 
