@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Products.css"
+import "./products.css"
 import { useState, useEffect } from 'react'
 import Pagination from './Pagination'
 import { getProducts } from "../../services/products"
@@ -50,7 +50,7 @@ export default function Products() {
           {product.dsc}
         </Card.Text>
         <Card.Text>
-          {product.price}
+          ${product.price}
          </Card.Text> 
          </Link>
         <Button variant="primary" onClick={() => addToCart(product)}>Add to Cart</Button>
