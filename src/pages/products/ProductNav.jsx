@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import { getBBQ } from '../services/products';
+import { getBBQ } from '../../services/products';
 import { useEffect, useState } from 'react';
 
 export default function ProductNav() { 
@@ -22,16 +22,19 @@ export default function ProductNav() {
           <Link to="/BBQ">BBQ</Link>
       </button>
       <button className="pizzas">
-          <Link to="/Products">Pizzas</Link>
+          <Link to="/Pizzas">Pizzas</Link>
       </button>
       <button className="sandwiches">
-          <Link to="/LoginRegister">Sandwiches</Link>
+          <Link to="/Sandwiches">Sandwiches</Link>
       </button>
       <button className="desserts">
-          <Link to="/LoginRegister">Desserts</Link>
+          <Link to="/Desserts">Desserts</Link>
       </button>
       <button className="drinks">
-          <Link to="/LoginRegister">Drinks</Link>
+          <Link to="/Drinks">Drinks</Link>
+      </button>
+      <button className="all">
+          <Link to="/All">All</Link>
       </button>
     </div>
   )
