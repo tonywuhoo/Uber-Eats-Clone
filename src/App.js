@@ -14,8 +14,10 @@ import Cookies from 'js-cookie'
 import BBQ from "./pages/products/BBQ"
 import Pizzas from "./pages/products/Pizzas"
 import Sandwiches from "./pages/products/Sandwiches"
+import Burgers from "./pages/products/Burgers"
 import Desserts from "./pages/products/Desserts"
 import Drinks from "./pages/products/Drinks"
+
 
 function App() {
   const [products, setProducts] = useState(null);
@@ -116,6 +118,7 @@ function App() {
         <Route path="/BBQ" element={<BBQ />} />
         <Route path="/Pizzas" element={<Pizzas />} />
         <Route path="/Sandwiches" element={<Sandwiches />} />
+        <Route path="/Burgers" element={<Burgers />} />
         <Route path="/Desserts" element={<Desserts />} />
         <Route path="/Drinks" element={<Drinks />} />
         <Route path="/All" element={<Products />} />

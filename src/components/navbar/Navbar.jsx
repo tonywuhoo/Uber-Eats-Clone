@@ -26,13 +26,13 @@ function NavScrollExample() {
             <Nav.Link href="/products">Products</Nav.Link>
             <NavDropdown title="Categories" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/bbq">BBQ</NavDropdown.Item>
+              <NavDropdown.Item href="/Pizzas">Pizzas</NavDropdown.Item>
+              <NavDropdown.Item href="/Sandwiches">Sandwiches</NavDropdown.Item>
+              <NavDropdown.Item href="/Desserts">Desserts</NavDropdown.Item>
               <NavDropdown.Item href="/Drinks">
                 Drinks
               </NavDropdown.Item>
               {/* <NavDropdown.Divider /> */}
-              <NavDropdown.Item href="/Sandwiches">
-                Sandwiches
-              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Form className="d-flex">

@@ -27,6 +27,9 @@ export default function ProductNav() {
       <button className="sandwiches">
           <Link to="/Sandwiches">Sandwiches</Link>
       </button>
+      <button className="burgers">
+          <Link to="/Burgers">Burgers</Link>
+      </button>
       <button className="desserts">
           <Link to="/Desserts">Desserts</Link>
       </button>

@@ -71,6 +71,17 @@ export const getDrinks = async () => {
     throw error;
   }
 };
+export const getBurgers = async () => {
+  try {
+    const response = await axios.get(
+      "https://ig-food-menus.herokuapp.com/burgers"
+    );
+    // console.log(response.data);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
 
 export const getDesserts = async () => {
   try {

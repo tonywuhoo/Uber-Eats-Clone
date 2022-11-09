@@ -55,6 +55,11 @@ padding: 15px;
   height: 45px;
   margin: 3px;
 }
+.burgers{
+  border-radius: 5px;
+  height: 45px;
+  margin: 3px;
+}
 .all{
   border-radius: 5px;
   height: 45px;
