@@ -36,6 +36,53 @@ export const getBBQ = async () => {
   }
 };
 
+export const getPizzas = async () => {
+  try {
+    const response = await axios.get(
+      "https://ig-food-menus.herokuapp.com/pizzas"
+    );
+    // console.log(response.data);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getSandwiches = async () => {
+  try {
+    const response = await axios.get(
+      "https://ig-food-menus.herokuapp.com/sandwiches"
+    );
+    // console.log(response.data);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getDrinks = async () => {
+  try {
+    const response = await axios.get(
+      "https://ig-food-menus.herokuapp.com/drinks"
+    );
+    // console.log(response.data);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getDesserts = async () => {
+  try {
+    const response = await axios.get(
+      "https://ig-food-menus.herokuapp.com/desserts"
+    );
+    // console.log(response.data);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
 // export const getLimitedProducts = async () => {
 //   try {
 //     const response = await axios.get(

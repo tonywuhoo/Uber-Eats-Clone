@@ -11,6 +11,11 @@ import { getProducts } from "./services/products";
 import { useEffect, useState } from "react";
 import ProductDetail from "./pages/productdetail/ProductDetail";
 import Cookies from 'js-cookie'
+import BBQ from "./pages/products/BBQ"
+import Pizzas from "./pages/products/Pizzas"
+import Sandwiches from "./pages/products/Sandwiches"
+import Desserts from "./pages/products/Desserts"
+import Drinks from "./pages/products/Drinks"
 
 function App() {
   const [products, setProducts] = useState(null);
@@ -108,6 +113,12 @@ function App() {
           setAddress={setAddress} />} />
         <Route path="/delivery" element={<Delivery />} />
         <Route path="/About" element={<About />} />
+        <Route path="/BBQ" element={<BBQ />} />
+        <Route path="/Pizzas" element={<Pizzas />} />
+        <Route path="/Sandwiches" element={<Sandwiches />} />
+        <Route path="/Desserts" element={<Desserts />} />
+        <Route path="/Drinks" element={<Drinks />} />
+        <Route path="/All" element={<Products />} />
         <Route path="/Products" element={<Products
         LoginStatus = {LoginStatus}
         setUserCart={setUserCart}

@@ -5,18 +5,18 @@ import Pagination from './Pagination'
 import { getProducts } from "../../services/products"
 import { Link } from "react-router-dom";
 import ProductNav from './ProductNav'
-import { getBBQ } from '../../services/products'
+import { getDesserts } from '../../services/products'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Cookies from 'js-cookie'
 import axios from "axios"
 export default function Products(props) {
-  const [products, setProducts] = useState([]);
+  const [desserts, setDesserts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerpage] = useState(20);
   const [localData, setlocalData] = useState([])
   async function fetchProductsData() {
-    setProducts(await getProducts());
+    setDesserts(await getDesserts());
   }
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function Products(props) {
 
   const lastProductIndex = currentPage * productsPerPage;
   const firstProductIndex = lastProductIndex - productsPerPage;
-  const currentProducts = products.slice(firstProductIndex, lastProductIndex);
+  const currentProducts = desserts.slice(firstProductIndex, lastProductIndex);
   async function addToCart(product) {
     if (Cookies.get("Status") === "false") {
       console.log("Not logged in")
@@ -40,16 +40,11 @@ export default function Products(props) {
           return response.json()
         })
         .then(data => {
-          if (data.cartItemsByID.includes(product._id)) {
-            alert("Product has been added to cart already")
-          }
-          else {
-            let local = [...data.cartItemsByID, product._id]
-            console.log(local)
-            axios.put("https://fubereats-backend-production.up.railway.app/users/" + Cookies.get("UserID"), {
-              cartItemsByID: [...local]
-            })
-          }
+          let local = [...data.cartItemsByID, product._id]
+          console.log(local)
+          axios.put("https://fubereats-backend-production.up.railway.app/users/" + Cookies.get("UserID"), {
+            cartItemsByID: [...local]
+          })
         })
     }
   }
@@ -81,7 +76,7 @@ export default function Products(props) {
           })
         }
       </div>
-      <Pagination totalProducts={products.length} productsPerPage={productsPerPage} setCurrentPage={setCurrentPage} />
+      <Pagination totalProducts={desserts.length} productsPerPage={productsPerPage} setCurrentPage={setCurrentPage} />
     </div>
   )
 }
