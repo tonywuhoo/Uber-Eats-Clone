@@ -22,7 +22,7 @@ export default function Menu({ handleToggle }) {
         <button className="reg btn">
           <Link to="/LoginRegister">Register</Link>
         </button>
-        <FaShoppingCart className="cart" />
+        <button><FaShoppingCart className="cart" /></button>
       </div>
       <header className="row block center" />
       <div>

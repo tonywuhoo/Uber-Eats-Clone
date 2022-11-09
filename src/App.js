@@ -12,18 +12,31 @@ import { getProducts } from "./services/products";
 import { useEffect, useState } from "react";
 import ProductDetail from "./pages/productdetail/ProductDetail";
 import Cookies from 'js-cookie'
-import BBQ from "./pages/products/BBQ";
-import Pizzas from "./pages/products/Pizza";
-import Desserts from "./pages/products/Desserts";
-import Drinks from "./pages/products/Drinks";
-import Sandwiches from "./pages/products/Sandwiches";
-
+import BBQ from "./pages/products/BBQ"
+import Pizzas from "./pages/products/Pizzas"
+import Sandwiches from "./pages/products/Sandwiches"
+import Desserts from "./pages/products/Desserts"
+import Drinks from "./pages/products/Drinks"
 
 function App() {
   // const items = { items }
   const [products, setProducts] = useState(null);
-  // const [deleteItems ] = deleteItems
-  const [cartItems, setCartItems] = useState([]);
+  const [Encrypted, setEncrypted] = useState("");
+  const [address, setAddress] = useState("");
+  const [userHash, setuserHash] = useState("");
+  const [userID, setuserID] = useState("No UserID")
+  const [Username, setUsername] = useState("Not logged in")
+  const [LoginStatus, setLoginStatus] = useState(false);
+  const [userCart, setUserCart] = useState([])
+  const [cartItems, setCartItems] = useState([{
+      _id: "6367e5cdf31be39cd94b0fcb",
+      img: "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/79619/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
+      name: "Joe's KC BBQ",
+      dsc: "Joe's KC Ribs, Brisket & Burnt Ends",
+      price: 110.99,
+      rate: 5,
+      country: "Kansas City, KS"
+    }]);
   // const [onAdd, setOnAdd] = useState();
   
   async function fetchProductsData() {
@@ -36,6 +49,27 @@ function App() {
       cartItems.add(itemId, 1)
         .then(res => {
         setCartItems(res.cartItems)
+  
+  useEffect(() => {
+    console.log()
+    fetch("https://fubereats-backend-production.up.railway.app/users/" + Cookies.get("UserID"))
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        for (let i = 0; i < data.cartItemsByID.length; i++){
+          fetch("https://fubereats-backend-production.up.railway.app/products/" + data.cartItemsByID[i])
+            .then(response => {
+              return response.json()
+            })
+            .then(data => {
+              cartItems.push(data)
+            })
+        }
+        console.log(cartItems)
+      })
+  }, []);
+  
   
   useEffect(() => {
     Cookies.set("Username", Username)
@@ -130,6 +164,12 @@ function App() {
         <Route path="/All" element={<Products />} />
         <Route path="/delivery" element={<Delivery />} />
         <Route path="/About" element={<About />} />
+        <Route path="/BBQ" element={<BBQ />} />
+        <Route path="/Pizzas" element={<Pizzas />} />
+        <Route path="/Sandwiches" element={<Sandwiches />} />
+        <Route path="/Desserts" element={<Desserts />} />
+        <Route path="/Drinks" element={<Drinks />} />
+        <Route path="/All" element={<Products />} />
         <Route path="/Products" element={<Products
         LoginStatus = {LoginStatus}
         setUserCart={setUserCart}
