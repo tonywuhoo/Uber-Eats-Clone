@@ -12,11 +12,11 @@ import { useEffect, useState } from "react";
 import ProductDetail from "./pages/productdetail/ProductDetail";
 import Cookies from 'js-cookie'
 import BBQ from "./pages/products/BBQ";
-import Pizzas from "./pages/products/BBQ";
-import Desserts from "./pages/products/BBQ";
-import Drinks from "./pages/products/BBQ";
-import Sandwiches from "./pages/products/BBQ";
-import All from "./pages/products/BBQ";
+import Pizzas from "./pages/products/Pizza";
+import Desserts from "./pages/products/Desserts";
+import Drinks from "./pages/products/Drinks";
+import Sandwiches from "./pages/products/Sandwiches";
+
 
 function App() {
   const [products, setProducts] = useState(null);
@@ -95,7 +95,7 @@ function App() {
         <Route path="/Sandwiches" element={<Sandwiches />} />
         <Route path="/Drinks" element={<Drinks />} />
         <Route path="/Desserts" element={<Desserts />} />
-        <Route path="/All" element={<All />} />
+        <Route path="/All" element={<Products />} />
         <Route path="/delivery" element={<Delivery />} />
         <Route path="/About" element={<About />} />
         <Route path="/Products" element={<Products
