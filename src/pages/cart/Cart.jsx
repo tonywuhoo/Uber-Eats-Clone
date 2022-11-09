@@ -34,16 +34,16 @@ export default function Cart(props) {
       {cartItems.length !== 0 && (
         <>
         <hr></hr>
-        <div className='row'> 
+        <div className='row'>
             <div className="col-2">Items Price</div>
             <div className="col-1 text-right">${itemsPrice.toFixed(2) }</div>
           </div>
-          <div className='row'> 
+          <div className='row'>
             {/* tax added to the price  */}
             <div className="col-2">Tax Price</div>
             <div className="col-1 text-right">${taxPrice.toFixed(2) }</div>
           </div>
-          <div className='row'> 
+          <div className='row'>
             {/* to show total price in cart of all items */}
             <div className="col-2"><strong>Total Price</strong></div>
 

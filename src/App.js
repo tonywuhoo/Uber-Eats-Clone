@@ -39,7 +39,7 @@ function App() {
   }
   
   useEffect(() => {
-    console.log("Running")
+    console.log()
     fetch("https://fubereats-backend-production.up.railway.app/users/" + Cookies.get("UserID"))
       .then(response => {
         return response.json()
@@ -51,19 +51,14 @@ function App() {
               return response.json()
             })
             .then(data => {
-              for (let j = 0; j < cartItems.length; j++){
-                if (cartItems[j]._id === data._id) {
-                  console.log("Already in cart")
-                }
-                else {
-                  console.log(data, cartItems[0]._id)
-                  cartItems.push(data)
-                }
-              }
+              cartItems.push(data)
             })
         }
+        console.log(cartItems)
       })
-  },[]);
+  }, []);
+  
+  
   useEffect(() => {
     Cookies.set("Username", Username)
     fetch("https://fubereats-backend-production.up.railway.app/users")
