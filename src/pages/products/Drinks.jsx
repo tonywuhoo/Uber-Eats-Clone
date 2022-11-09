@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Pagination from './Pagination'
 import { getProducts } from "../../services/products"
 import { Link } from "react-router-dom";
-import ProductNav from '../../components/ProductNav'
+import ProductNav from './ProductNav'
 import { getDrinks } from '../../services/products'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -29,7 +29,7 @@ export default function Products(props) {
 
   const lastProductIndex = currentPage * productsPerPage;
   const firstProductIndex = lastProductIndex - productsPerPage;
-  const currentProducts = BBQ.slice(firstProductIndex, lastProductIndex);
+  const currentProducts = drinks.slice(firstProductIndex, lastProductIndex);
   async function addToCart(product) {
     if (Cookies.get("Status") === "false") {
       console.log("Not logged in")

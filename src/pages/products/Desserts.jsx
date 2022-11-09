@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Pagination from './Pagination'
 import { getProducts } from "../../services/products"
 import { Link } from "react-router-dom";
-import ProductNav from '../../components/ProductNav'
+import ProductNav from './ProductNav'
 import { getDesserts } from '../../services/products'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';

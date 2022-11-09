@@ -34,7 +34,7 @@ export default function ProductNav() {
           <Link to="/Drinks">Drinks</Link>
       </button>
       <button className="all">
-          <Link to="/All">All</Link>
+          <Link to="/Products">All</Link>
       </button>
     </div>
   )
