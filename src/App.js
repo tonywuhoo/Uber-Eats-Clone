@@ -1,4 +1,5 @@
 import "./App.css";
+import "./pages/cart/cart.css"
 import Navbar from "./components/navbar/Navbar.jsx";
 import Home from "./pages/home/Home";
 import { Routes, Route } from "react-router-dom";
@@ -12,100 +13,86 @@ import { useEffect, useState } from "react";
 import ProductDetail from "./pages/productdetail/ProductDetail";
 
 function App() {
+  // const items = { items }
   const [products, setProducts] = useState(null);
-  const [Encrypted, setEncrypted] = useState("");
-  const [address, setAddress] = useState("");
-  const [userHash, setuserHash] = useState("");
-  const [userID, setuserID] = useState("No UserID")
-  const [Username, setUsername] = useState("Not logged in")
-  const [LoginStatus, setLoginStatus] = useState(false);
-  const [userCart, setUserCart] = useState([])
-  const [cartItems, setCartItems] = useState([{
-      _id: "6367e5cdf31be39cd94b0fcb",
-      img: "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/79619/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
-      name: "Joe's KC BBQ",
-      dsc: "Joe's KC Ribs, Brisket & Burnt Ends",
-      price: 110.99,
-      rate: 5,
-      country: "Kansas City, KS"
-    }]);
+  // const [deleteItems ] = deleteItems
+  const [cartItems, setCartItems] = useState([
+  //   {
+  //   _id: "6367e5cdf31be39cd94b0fcb",
+  //   img: "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/79619/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
+  //   name: "Joe's KC BBQ",
+  //   dsc: "Joe's KC Ribs, Brisket & Burnt Ends",
+  //   price: 110.99,
+  //   rate: 5,
+  //   country: "Kansas City, KS"
+  // }
+  ]);
   // const [onAdd, setOnAdd] = useState();
   
   async function fetchProductsData() {
     setProducts(await getProducts());
     // Step 1: set up services endpoint to get items from cart, then setCartItems => need to set cart items to pass into Cart component
   }
-
-  useEffect(() => {
-    fetch("https://fubereats-backend-production.up.railway.app/users")
-      .then(response => {
-        return response.json()
+  const addToCart = (itemId) => {
+  
+    if (itemId) {
+      cartItems.add(itemId, 1)
+        .then(res => {
+        setCartItems(res.cartItems)
       })
-      .then(data => {
-        data.map((element) => {
-          if (element.hash === userHash) {
-            setuserID(element._id)
-          }
-        })
-      })
-  })
-
-  useEffect(() => {
-    fetchProductsData();
-  }, []);
-
-  const onAdd = (item) => {
-    // Need additional API call to update user cart
-    console.log("Item added", item)
-  }
-
-  const onRemove = (item) => {
-    // Need additional API call to update user cart
-    console.log("Item removed", item)
-  }
-
-  // if (!products) {
-  //   console.log("loading...");
-  // } else {
-  //   console.log("complete: ", products);
-  // }
-
-
-
-  return (
-    <div className="App">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home
-          address={address}
-          setAddress={setAddress} />} />
-        <Route path="/delivery" element={<Delivery />} />
-        <Route path="/About" element={<About />} />
-        <Route path="/Products" element={<Products
-        LoginStatus = {LoginStatus}
-        setUserCart={setUserCart}
-        userCart={userCart} />} />
-        <Route path="/Cart" element={<Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
-        <Route path="/LoginRegister" element={<LoginRegister
-                  Encrypted={Encrypted}
-                  setEncrypted={setEncrypted}
-                  userHash={userHash}
-                  setuserHash={setuserHash}
-                  Username={Username}
-                  setUsername={setUsername}
-                  LoginStatus={LoginStatus}
-                  setLoginStatus={setLoginStatus}
-                  userCart={userCart}
-                  setUserCart={setUserCart}
-                  userID={userID}
-                  setuserID={setuserID}/>} />
-        <Route path="/Products/:id" element={<ProductDetail
-          LoginStatus = {LoginStatus}
-          setUserCart={setUserCart}
-          userCart={userCart}/>} />
-      </Routes>
-    </div>
-  );
+    }
 }
+  // useEffect(() => {
+  //   setCartItems([]);
+  //   fetchProductsData();
+  // }, []);
+  
+  // // }, []);
+  
+  //   const onAdd = (Products) => {
+  //       fetchProductsData()
+  //     }, [Products];  return response.data;
+  //     finally {
+  //       console.log("Item added", Products)
+  //     }
+      // Need additional API call to update user cart
+      
+      
+  // const removeItems = async (req, res) => {
+  //   try {
+  //     const { id } = req.params;
+  //     const deleted = await Products.findByIdAndDelete(id)
+          
+  //     if (deleted) {
+  //       return res.status(200).send("Item deleted!");
+  //     }
+  //     throw new Error("Item not found");
+  //   }}
+      
+    
+    if (!Products) {
+      console.log("loading...");
+    } else {
+      console.log("complete: ", products);
+    }
+  return (
+      
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/delivery" element={<Delivery />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Products" element={<Products />} />
+          <Route path="/Cart" element={<Cart cartItems={cartItems} addToCart={addToCart}/>} />
+          <Route path="/LoginRegister" element={<LoginRegister />} />
+          <Route path="/Products/:id" element={<ProductDetail />} />
+        </Routes>
+      </div>
+    );
+  
+  }
+
 
 export default App;
+
