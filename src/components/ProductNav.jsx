@@ -19,7 +19,7 @@ export default function ProductNav() {
   return (
     <div className="product-navbar">
       <button className="bbq" >
-          <Link to="/Products">BBQ</Link>
+          <Link to="/BBQ">BBQ</Link>
       </button>
       <button className="pizzas">
           <Link to="/Products">Pizzas</Link>

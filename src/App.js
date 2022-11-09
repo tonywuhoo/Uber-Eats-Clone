@@ -11,6 +11,7 @@ import { getProducts } from "./services/products";
 import { useEffect, useState } from "react";
 import ProductDetail from "./pages/productdetail/ProductDetail";
 import Cookies from 'js-cookie'
+import BBQ from "./pages/products/BBQ";
 
 function App() {
   const [products, setProducts] = useState(null);
@@ -84,6 +85,7 @@ function App() {
         <Route path="/" element={<Home
           address={address}
           setAddress={setAddress} />} />
+        <Route path="/BBQ" element={<BBQ />} />
         <Route path="/delivery" element={<Delivery />} />
         <Route path="/About" element={<About />} />
         <Route path="/Products" element={<Products
