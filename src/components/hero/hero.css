@@ -1,7 +1,9 @@
 .hero-ctr {
+  background-color: rgba(0, 0, 0, 0.096);
   background-image: url("../../../public/fast-food.png");
   background-size: cover;
   background-position: center;
+  background-blend-mode: multiply;
   margin-top: 30px;
   height: 100vh;
   display: flex;

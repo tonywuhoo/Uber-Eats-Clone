@@ -11,3 +11,43 @@
   padding: 20px;
   padding-top: 100px;
 }
+
+.card > img {
+  width: 100%;
+}
+
+.img {
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.273);
+  background-image: url("../../images/food1.jpg");
+  background-size: cover;
+  background-repeat: none;
+  background-position: center;
+  background-blend-mode: multiply;
+}
+
+.img2 {
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.273);
+  background-image: url("../../images/person-cook.jpg");
+  background-size: cover;
+  background-repeat: none;
+  background-position: center;
+  background-blend-mode: multiply;
+
+}
+.img3 {
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.273);
+  background-image: url("../../images/deliver.jpg");
+  background-size: cover;
+  background-repeat: none;
+  background-position: center;
+  background-blend-mode: multiply;
+
+}
+
+
