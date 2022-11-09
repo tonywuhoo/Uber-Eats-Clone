@@ -3,6 +3,7 @@
   top: 0;
   width: 100vw;
   z-index: 1000;
+  padding: 20px 0;
 }
 
 .navbar-expand-lg .navbar-collapse {
