@@ -25,7 +25,6 @@ function ProductDetail(props) {
    }
 
   return (
-<<<<<<< HEAD
     <div>
     <Link to={`/Products/`}>
       <div className="back">Back to Products</div>
@@ -47,15 +46,6 @@ function ProductDetail(props) {
       </Card.Body>
         </Card>
         </div>
-=======
-    <div className="product-detail">
-      <img className="product-detail-img" src={product.img} alt={product.name} />
-      <div className="detail">
-          <div className="name"><h1>{product.name}</h1></div>
-          <div className="description"><h3>{product.dsc}</h3></div>
-          <div className="price"><h3>${product.price}</h3></div>
-          <div className="cart"><button onClick={addToCart}>Add to Cart</button></div>
->>>>>>> 6db27c889fceb1f4e6727b779d2e23b445473ab9
       </div>
   )
 }
