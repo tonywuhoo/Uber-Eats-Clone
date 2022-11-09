@@ -40,11 +40,16 @@ export default function Products(props) {
           return response.json()
         })
         .then(data => {
-          let local = [...data.cartItemsByID, product._id]
-          console.log(local)
-          axios.put("https://fubereats-backend-production.up.railway.app/users/" + Cookies.get("UserID"), {
-            cartItemsByID: [...local]
-          })
+          if (data.cartItemsByID.includes(product._id)) {
+            alert("Product has been added to cart already")
+          }
+          else {
+            let local = [...data.cartItemsByID, product._id]
+            console.log(local)
+            axios.put("https://fubereats-backend-production.up.railway.app/users/" + Cookies.get("UserID"), {
+              cartItemsByID: [...local]
+            })
+          }
         })
     }
   }
