@@ -28,6 +28,7 @@ function NavScrollExample() {
               <NavDropdown.Item href="/bbq">BBQ</NavDropdown.Item>
               <NavDropdown.Item href="/Pizzas">Pizzas</NavDropdown.Item>
               <NavDropdown.Item href="/Sandwiches">Sandwiches</NavDropdown.Item>
+              <NavDropdown.Item href="/Burgers">Burgers</NavDropdown.Item>
               <NavDropdown.Item href="/Desserts">Desserts</NavDropdown.Item>
               <NavDropdown.Item href="/Drinks">
                 Drinks
