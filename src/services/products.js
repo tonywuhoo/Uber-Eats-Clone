@@ -106,27 +106,3 @@ export const getPizza = async () => {
     throw error;
   }
 };
-
-export const getDrinks = async () => {
-  try {
-    const response = await axios.get(
-      "https://ig-food-menus.herokuapp.com/drinks"
-    );
-    // console.log(response.data);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const getSandwiches = async () => {
-  try {
-    const response = await axios.get(
-      "https://ig-food-menus.herokuapp.com/sandwiches"
-    );
-    // console.log(response.data);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
