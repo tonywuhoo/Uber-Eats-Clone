@@ -3,7 +3,6 @@ import sha256 from 'js-sha256'
 import axios from 'axios';
 import "./loginregister.css"
 import Cookies from 'js-cookie'
-// import { getUserByHash } from "../../services/userinfo";
 
 export default function LoginRegister(props) {
   const [RegisterUser, setRegisterUser] = useState("");
@@ -12,17 +11,6 @@ export default function LoginRegister(props) {
   const [LoginUser, setLoginUser] = useState("");
   const [LoginPassword, setLoginPassword] = useState("");
   const [LoginConfirmPassword, setLoginConfirmPassword] = useState("")
-
-  function doShit() {
-    console.log("Clicked")
-    console.log(Cookies.get("UserID"))
-    // getUserByHash(props.userHash);
-    // axios.put("https://fubereats-backend-production.up.railway.app/users/" + Cookies.get("UserID"), {
-    //   hash: props.userHash,
-    //   cartItemsByID: ["Test", "Test"]
-    // })
-    console.log(Cookies.get())
-  }
 
   const ResetParameters = async () => {
     document.getElementById("username-register").value = "";
@@ -93,8 +81,8 @@ export default function LoginRegister(props) {
                   console.log(response.data);
                   props.setLoginStatus(true);
                   props.setuserHash(props.Encrypted)
+                  Cookies.set("Username", RegisterUser)
                   ResetParameters();
-                  props.setUsername(RegisterUser)
                   alert("Registered and Logged in ...");
                 });
             }
@@ -129,7 +117,7 @@ export default function LoginRegister(props) {
           userHashes.map((element) => {
             if (element === props.Encrypted) {
               props.setuserHash(props.Encrypted)
-              props.setUsername(LoginUser)
+              Cookies.set("Username", LoginUser)
               props.setLoginStatus(true);
             }
           })
@@ -142,7 +130,7 @@ export default function LoginRegister(props) {
 
   const doLogOut = (event) => {
     if (Cookies.get("Status") === "false") {
-      props.setUsername("Not logged in")
+      Cookies.set("Username", "Not logged in")
       alert("Already logged out");
     }
     if (Cookies.get("Status") === "true") {
@@ -159,9 +147,13 @@ export default function LoginRegister(props) {
 
   return (
     <div className='LoginRegister'>
-      <h>
+      <br></br>
+      <h3 class ="Welcome">
         Welcome : {Cookies.get("Username")}
-      </h>
+      </h3>
+      <br></br>
+      <br></br>
+      <div class="forms">
       <form onSubmit={doRegister}>
         Register Account :
         <br></br>
@@ -191,13 +183,17 @@ export default function LoginRegister(props) {
         <br></br>
         <input type="submit" />
       </form>
-      <br></br>
-      <button onClick={doLogOut}>
+        <br></br>
+        </div>
+      <button class ="logOut" onClick={doLogOut}>
         Log Out
       </button>
-      <button onClick={doShit}>
-        Click
-      </button>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
     </div>
   )
 }

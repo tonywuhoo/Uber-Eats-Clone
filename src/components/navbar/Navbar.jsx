@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartIcon from "./cartIcon.jsx"
+import Cookies from "js-cookie";
 import "./navbar.css"
 
 function NavScrollExample() {
@@ -44,12 +45,19 @@ function NavScrollExample() {
               aria-label="Search"
             />
             <Button variant="outline-success ml-2">Search</Button>
+            {Cookies.get("Username") === "Not logged in" && <>
             <Nav.Link href="/LoginRegister" className="ml-5 linkss">
               Login
             </Nav.Link>
             <Nav.Link href="/LoginRegister" className='linkss'>
               Register
+              </Nav.Link> </>}
+            
+            {Cookies.get("Username") !== "Not logged in" && <>
+            <Nav.Link href="/LoginRegister" className="ml-5 linkss">
+              {Cookies.get("Username")}
             </Nav.Link>
+            </>}
             <CartIcon className="cart-icon"/>
           </Form>
         </Navbar.Collapse>
