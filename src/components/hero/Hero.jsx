@@ -8,7 +8,7 @@ export default function hero() {
     <div className="hero-ctr container-fluid">
       <div className="home-box container-fluid">
         <div className="display-4 hungry">Get food Now!</div>
-        <p>Get 50% off your next order when you enter BOGOSLFGKF beatae.</p>
+        <p>Get 95% off your next order with promo code FEEDME123.</p>
 
         <form>
           <div class="form-group">
