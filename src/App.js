@@ -28,7 +28,8 @@ function App() {
   const [Username, setUsername] = useState("Not logged in")
   const [LoginStatus, setLoginStatus] = useState(false);
   const [userCart, setUserCart] = useState([])
-  let [cartItems, setCartItems] = useState([{
+  let [cartItems, setCartItems] = useState([
+    {
       _id: "636aaf0d303a8090f257dc73",
       img: "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/79619/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
       name: "Joe's KC BBQ",
@@ -36,7 +37,8 @@ function App() {
       price: 110.99,
       rate: 5,
       country: "Kansas City, KS"
-  }]);
+  }
+  ]);
 
   // const [onAdd, setOnAdd] = useState();
   
