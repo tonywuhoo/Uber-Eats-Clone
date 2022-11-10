@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Cookies from 'js-cookie'
 import axios from "axios"
+import Products from '../products/Products';
 
 function ProductDetail(props) {
   const [product, setProduct] = useState([])
@@ -23,6 +24,10 @@ function ProductDetail(props) {
   }, [id])
 
   async function addToCart(product) {
+    if (product._id === undefined || product._id === null) {
+      alert("This button currently doesn't work")
+      return
+    }
     if (Cookies.get("Status") === "false") {
       console.log("Not logged in")
       alert("You must be logged in to add to cart!")
@@ -38,7 +43,6 @@ function ProductDetail(props) {
           }
           else {
             let local = [...data.cartItemsByID, product._id]
-            console.log(local)
             axios.put("https://fubereats-backend-production.up.railway.app/users/" + Cookies.get("UserID"), {
               cartItemsByID: [...local]
             })
