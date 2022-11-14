@@ -1,0 +1,13 @@
+.pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  gap: 5px;
+  margin-bottom: 50px;
+}
+
+.page-button{
+  border-radius: 25%;
+  border: 1px;
+}

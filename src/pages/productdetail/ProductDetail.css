@@ -1,0 +1,11 @@
+.back{
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+.detail-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}

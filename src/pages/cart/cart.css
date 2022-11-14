@@ -1,0 +1,28 @@
+.cart-btn {
+  font-size: 0.8rem;
+  padding: 0.2rem;
+  margin: 0.1rem;
+  border-radius: 0.5rem;
+  border: 0.1 solid;
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+}
+
+.Products{
+  text-align: center;
+}
+
+button.remove {
+  background-color: red;
+  width: 1.5rem;
+}
+
+button.badge{
+  background-color: red;
+  border: none;
+  color: white;
+  width: 1.5rem;
+}

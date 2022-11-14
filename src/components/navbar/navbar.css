@@ -1,0 +1,21 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1000;
+  padding: 20px 0;
+}
+
+.navbar-expand-lg .navbar-collapse {
+  justify-content: space-between;
+}
+.cart-icon {
+  margin-left: 50px;
+}
+
+.linkss {
+  color:white;
+}
+.linkss:hover {
+  color:rgb(89, 226, 71);
+}

@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+.product-ctr {
+  padding-top: 70px;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.products{
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 3em;
+  padding: 100px;
+  margin: 10px;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.card-text, .card-title {
+  color: black;
+}
+
+.product-navbar {
+padding: 15px;
+}
+
+.bbq {
+  border-radius: 5px;
+  height: 45px;
+ margin: 3px;
+}
+
+.pizzas {
+  border-radius: 5px;
+  height: 45px;
+  margin: 3px;
+}
+
+.sandwiches {
+  border-radius: 5px;
+  height: 45px;
+  margin: 3px;
+}
+
+.desserts {
+  border-radius: 5px;
+  height: 45px;
+  margin: 3px;
+}
+
+.drinks{
+  border-radius: 5px;
+  height: 45px;
+  margin: 3px;
+}
+.burgers{
+  border-radius: 5px;
+  height: 45px;
+  margin: 3px;
+}
+.all{
+  border-radius: 5px;
+  height: 45px;
+  margin: 3px;
+  width: 45px
+}

@@ -1,0 +1,23 @@
+.LoginRegister {
+  padding: 75px;
+  margin: 20px;
+}
+
+.forms {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  gap: 20px;
+  position: absolute;
+  left: 450px;
+}
+
+h3 {
+  text-align: center;
+}
+
+.logOut{
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 600px;
+}

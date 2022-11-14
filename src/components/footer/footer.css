@@ -1,0 +1,19 @@
+.navbar2 {
+  margin: 0;
+  position: relative;
+  height: 60vh
+}
+
+.navbar3 {
+  flex-direction: column;
+}
+
+.navbar4 {
+  margin-top: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-log-link {
+  margin-left: 0 !important;
+}
