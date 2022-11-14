@@ -32,7 +32,8 @@ export default function Products(props) {
  const currentProducts = BBQ.slice(firstProductIndex, lastProductIndex);
  let [grabItem, setItem] = useState("")
   
- async function addToCart(product) {
+  async function addToCart(product) {
+   console.log(product)
    fetch("https://fubereats-backend-production.up.railway.app/products")
      .then(response => {
        return response.json()

@@ -18,8 +18,7 @@ function ProductDetail(props) {
     const fetchProduct = async () => {
       let oneProduct = await getProduct(id)
       setProduct(oneProduct)
-    }
-  
+    }  
     fetchProduct()
   }, [id])
 
